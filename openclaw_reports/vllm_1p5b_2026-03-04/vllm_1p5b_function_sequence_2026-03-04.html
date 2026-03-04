@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vLLM 1.5B 推理函数级时序图（补充版）</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --panel: rgba(15, 24, 44, 0.75);
+      --text: #d7e4ff;
+      --muted: #8ea5d1;
+      --cyan: #37e6ff;
+      --violet: #8b5cf6;
+      --line: rgba(90, 122, 190, 0.35);
+      --ok: #4ade80;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at 85% -20%, rgba(55,230,255,.18), transparent 65%),
+        radial-gradient(900px 400px at -10% 0%, rgba(139,92,246,.16), transparent 60%),
+        linear-gradient(180deg, #060a12 0%, #070b14 100%);
+      line-height: 1.65;
+    }
+    .grid {
+      position: fixed; inset: 0; pointer-events: none; opacity: .18;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+    }
+    .container { max-width: 1040px; margin: 42px auto; padding: 0 20px 80px; }
+    .hero {
+      border: 1px solid rgba(55,230,255,.35);
+      background: linear-gradient(140deg, rgba(23,32,58,.72), rgba(11,18,34,.72));
+      border-radius: 18px;
+      padding: 24px 26px;
+      box-shadow: 0 0 0 1px rgba(55,230,255,.1) inset, 0 10px 40px rgba(0,0,0,.45);
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: .3px; }
+    .sub { color: var(--muted); font-size: 14px; }
+    .badge {
+      display: inline-block; margin-top: 12px; padding: 5px 10px; font-size: 12px;
+      border: 1px solid rgba(74,222,128,.55); color: var(--ok); border-radius: 999px;
+      background: rgba(74,222,128,.08);
+    }
+    section {
+      margin-top: 22px;
+      border: 1px solid rgba(139,92,246,.25);
+      border-radius: 14px;
+      background: var(--panel);
+      backdrop-filter: blur(4px);
+      padding: 18px 20px;
+    }
+    h2 { margin: 0 0 12px; color: #bcd2ff; font-size: 18px; }
+    h3 { margin: 12px 0 8px; color: #9ecbff; font-size: 15px; }
+    p, li { color: var(--text); }
+    ul { margin: 6px 0 0 18px; }
+    code {
+      color: #8be9fd;
+      background: rgba(8,12,20,.8);
+      border: 1px solid rgba(55,230,255,.18);
+      padding: 1px 6px;
+      border-radius: 6px;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 12.5px;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: rgba(3,7,14,.9);
+      border: 1px solid rgba(55,230,255,.22);
+      border-radius: 12px;
+      padding: 14px;
+      color: #bfe9ff;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    .foot { margin-top: 20px; color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="container">
+    <div class="hero">
+      <h1>vLLM 1.5B 推理函数级时序图（补充版）</h1>
+      <div class="sub">基于本机实测链路（<code>/v1/completions</code>） + vLLM 源码（v0.16.0, <code>vllm_repo</code>）整理</div>
+      <span class="badge">Function-Level Trace Ready</span>
+    </div>
+
+    <section>
+      <h2>1) 函数级时序图（主链路）</h2>
+      <pre>sequenceDiagram
+    autonumber
+    participant C as Client
+    participant R as api_router.py
+    participant S as completion/serving.py
+    participant A as v1/engine/async_llm.py
+    participant CC as v1/engine/core_client.py
+    participant EC as v1/engine/core.py
+    participant W as v1/worker/gpu_worker.py
+    participant MR as v1/worker/gpu_model_runner.py
+    participant OP as v1/engine/output_processor.py
+
+    C-&gt;&gt;R: POST /v1/completions
+    R-&gt;&gt;R: create_completion(...)
+    R-&gt;&gt;S: OpenAIServingCompletion.create_completion(...)
+
+    S-&gt;&gt;A: generate(prompt, sampling_params)
+    A-&gt;&gt;A: _add_request(...) / add_request(...)
+    A-&gt;&gt;CC: add_request_async(EngineCoreRequest)
+    CC-&gt;&gt;EC: add_request(...)
+
+    loop 每轮调度
+      EC-&gt;&gt;EC: step() / _process_engine_step()
+      EC-&gt;&gt;W: execute_model(scheduler_output)
+      W-&gt;&gt;MR: execute_model(...)
+      MR--&gt;&gt;W: new_token_ids / finish_reason / kv状态
+      W--&gt;&gt;EC: EngineCoreOutputs
+      EC--&gt;&gt;CC: outputs
+      CC--&gt;&gt;A: request outputs stream
+      A-&gt;&gt;OP: process_outputs(...)
+      OP--&gt;&gt;A: RequestOutput(文本片段/完成标记)
+    end
+
+    A--&gt;&gt;S: 生成结果流/最终结果
+    S-&gt;&gt;S: request_output_to_completion_response(...)
+    S--&gt;&gt;R: OpenAI兼容响应对象
+    R--&gt;&gt;C: JSON(choices + usage)</pre>
+    </section>
+
+    <section>
+      <h2>2) 关键函数定位（文件:行号）</h2>
+      <h3>OpenAI 入口层</h3>
+      <ul>
+        <li><code>vllm/entrypoints/openai/completion/api_router.py:46</code> - <code>async def create_completion(...)</code></li>
+        <li><code>vllm/entrypoints/openai/completion/serving.py:125</code> - <code>async def create_completion(...)</code></li>
+        <li><code>vllm/entrypoints/openai/completion/serving.py:294</code> - <code>async def completion_stream_generator(...)</code></li>
+        <li><code>vllm/entrypoints/openai/completion/serving.py:481</code> - <code>def request_output_to_completion_response(...)</code></li>
+      </ul>
+
+      <h3>异步引擎层</h3>
+      <ul>
+        <li><code>vllm/v1/engine/async_llm.py:530</code> - <code>async def generate(...)</code></li>
+        <li><code>vllm/v1/engine/async_llm.py:289</code> - <code>async def add_request(...)</code></li>
+        <li><code>vllm/v1/engine/async_llm.py:406</code> - <code>async def _add_request(...)</code></li>
+      </ul>
+
+      <h3>Core Client / Core 调度层</h3>
+      <ul>
+        <li><code>vllm/v1/engine/core_client.py:213</code> - <code>async def add_request_async(...)</code></li>
+        <li><code>vllm/v1/engine/core.py:292</code> - <code>def add_request(...)</code></li>
+        <li><code>vllm/v1/engine/core.py:379</code> - <code>def step(...)</code></li>
+        <li><code>vllm/v1/engine/core.py:1161</code> - <code>def _process_engine_step(...)</code></li>
+      </ul>
+
+      <h3>Worker 执行层</h3>
+      <ul>
+        <li><code>vllm/v1/worker/gpu_worker.py:659</code> - <code>def execute_model(...)</code></li>
+        <li><code>vllm/v1/worker/gpu_model_runner.py:3378</code> - <code>def execute_model(...)</code></li>
+      </ul>
+
+      <h3>输出处理层</h3>
+      <ul>
+        <li><code>vllm/v1/engine/output_processor.py:508</code> - <code>def add_request(...)</code></li>
+        <li><code>vllm/v1/engine/output_processor.py:572</code> - <code>def process_outputs(...)</code></li>
+        <li><code>vllm/v1/engine/output_processor.py:376</code> - <code>def _new_completion_output(...)</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3) 数据流分层说明</h2>
+      <ol>
+        <li><b>API层</b>：文本 prompt + sampling params 进入。</li>
+        <li><b>AsyncLLM层</b>：封装成 <code>EngineCoreRequest</code>，进入异步队列。</li>
+        <li><b>Core/Scheduler层</b>：执行 prefill/decode 调度，分配/复用 KV cache。</li>
+        <li><b>GPU Worker/Runner层</b>：执行前向，输出 <code>new_token_ids</code>。</li>
+        <li><b>OutputProcessor层</b>：detokenize + stop 检查 + usage 统计。</li>
+        <li><b>Serving层</b>：组装 OpenAI JSON（choices/usage/finish_reason）并返回。</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>4) 性能定位优先观测点</h2>
+      <ul>
+        <li><code>core.py::step</code>：调度节奏、等待/饥饿状态</li>
+        <li><code>gpu_model_runner.py::execute_model</code>：prefill vs decode 算力压力</li>
+        <li><code>output_processor.py::process_outputs</code>：流式输出节拍与结束条件</li>
+        <li>结合 runtime 日志：throughput、KV cache usage、prefix cache hit rate</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5) 与实测一致性</h2>
+      <ul>
+        <li>日志验证链路可用：<code>/v1/completions</code> 返回 200。</li>
+        <li>日志存在 <code>Asynchronous scheduling is enabled</code>，与 <code>async_llm -&gt; core.step</code> 路径一致。</li>
+        <li>日志包含 KV cache 与吞吐指标，和本文观测点可一一对应。</li>
+      </ul>
+      <div class="foot">Generated for 刷锅 · 2026-03-04</div>
+    </section>
+  </div>
+</body>
+</html>
