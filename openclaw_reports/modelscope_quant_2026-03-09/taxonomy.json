@@ -1,0 +1,580 @@
+{
+  "generated_at": "2026-03-09",
+  "source": "ModelScope api/v1/models list endpoint",
+  "taxonomy": "2026 大模型量化格式与架构全景表（用户给定 taxonomy + 通用位宽补充类）",
+  "total_models": 175300,
+  "quantized_total": 34688,
+  "quantized_ratio": 19.7878,
+  "explicit_taxonomy_total": 24135,
+  "explicit_taxonomy_ratio_in_quantized": 69.5774,
+  "stream_rows": [
+    {
+      "stream": "一、下一代硬件原生标准",
+      "count": 1490,
+      "pct_all": 0.85,
+      "pct_quantized": 4.2954
+    },
+    {
+      "stream": "二、全链路量化加速",
+      "count": 465,
+      "pct_all": 0.2653,
+      "pct_quantized": 1.3405
+    },
+    {
+      "stream": "三、权重压缩 (PTQ)",
+      "count": 4754,
+      "pct_all": 2.7119,
+      "pct_quantized": 13.705
+    },
+    {
+      "stream": "四、混合架构与边缘侧",
+      "count": 17310,
+      "pct_all": 9.8745,
+      "pct_quantized": 49.902
+    },
+    {
+      "stream": "五、微调专属规范",
+      "count": 41,
+      "pct_all": 0.0234,
+      "pct_quantized": 0.1182
+    },
+    {
+      "stream": "六、极限压缩与未来架构",
+      "count": 75,
+      "pct_all": 0.0428,
+      "pct_quantized": 0.2162
+    },
+    {
+      "stream": "七、通用位宽命名（未明确算法）",
+      "count": 10553,
+      "pct_all": 6.02,
+      "pct_quantized": 30.4226
+    }
+  ],
+  "format_rows": [
+    {
+      "key": "mxfp8_mxint8",
+      "label": "MXFP8 / MXINT8",
+      "stream": "一、下一代硬件原生标准",
+      "object": "权重+激活",
+      "count": 25,
+      "pct_all": 0.0143,
+      "pct_quantized": 0.0721,
+      "examples": [
+        "nightmedia/Qwen3.5-27B-Claude-4.6-OS-INSTRUCT-mxfp8-mlx",
+        "nightmedia/Qwen3.5-2B-mxfp8-mlx",
+        "nightmedia/Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-mxfp8-mlx",
+        "mlx-community/Qwen3-Reranker-8B-mxfp8",
+        "nightmedia/Qwen3.5-9B-mxfp8-mlx",
+        "mlx-community/Qwen3.5-27B-mxfp8",
+        "nightmedia/Qwen3.5-4B-mxfp8-mlx",
+        "mlx-community/Qwen3.5-4B-mxfp8"
+      ]
+    },
+    {
+      "key": "mxfp4_mxfp6",
+      "label": "MXFP4 / MXFP6",
+      "stream": "一、下一代硬件原生标准",
+      "object": "权重+激活",
+      "count": 206,
+      "pct_all": 0.1175,
+      "pct_quantized": 0.5939,
+      "examples": [
+        "hf/BennyDaBall-MiniMax-M2.5-REAP-139B-A10B-MXFP4",
+        "hf/GadflyII-GLM-4.7-Flash-MXFP4",
+        "nightmedia/Qwen3.5-122B-A10B-Text-mxfp4-mlx",
+        "mlx-community/GLM-5-MXFP4-Q8",
+        "bartowski/openai_gpt-oss-120b-GGUF-MXFP4-Experimental",
+        "amd/DeepSeek-R1-MXFP4-Preview",
+        "mlx-community/GLM-4.7-Flash-4bit-mxfp4",
+        "RepublicOfKorokke/Qwen3.5-35B-A3B-mlx-lm-mxfp4"
+      ]
+    },
+    {
+      "key": "nvfp4",
+      "label": "NVFP4",
+      "stream": "一、下一代硬件原生标准",
+      "object": "权重+激活",
+      "count": 207,
+      "pct_all": 0.1181,
+      "pct_quantized": 0.5967,
+      "examples": [
+        "black-forest-labs/FLUX.2-klein-9b-nvfp4",
+        "lightx2v/Wan-NVFP4",
+        "AiMETATRON/FLUX.2-klein-9B-Blitz",
+        "RedHatAI/Qwen3-Next-80B-A3B-Instruct-NVFP4",
+        "nm-testing/Qwen3-Next-80B-A3B-Instruct-NVFP4",
+        "hf/Sehyo-Qwen3.5-35B-A3B-NVFP4",
+        "nv-community/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4",
+        "hf/GadflyII-GLM-4.7-Flash-NVFP4"
+      ]
+    },
+    {
+      "key": "fp8_standard",
+      "label": "标准 FP8",
+      "stream": "一、下一代硬件原生标准",
+      "object": "权重+激活",
+      "count": 1052,
+      "pct_all": 0.6001,
+      "pct_quantized": 3.0327,
+      "examples": [
+        "muse/Wan2.2-TI2V-5B-FP8",
+        "ONETranquil/F.1-dev-fp8",
+        "MusePublic/FLUX.1-dev-fp8-dit",
+        "MusePublic/Qwen-image-fp8",
+        "SGFTGYXZG8/chengshi-jianzhu",
+        "muse/Wan2.1-T2V-1.3B-FP8",
+        "ikonion/hyx.260207.realreveal5.fp8",
+        "zzjjbb1985/Qwen-Image-Editv2509-zjb1118-fp8"
+      ]
+    },
+    {
+      "key": "smoothquant_w8a8",
+      "label": "SmoothQuant / W8A8",
+      "stream": "二、全链路量化加速",
+      "object": "权重+激活",
+      "count": 465,
+      "pct_all": 0.2653,
+      "pct_quantized": 1.3405,
+      "examples": [
+        "neuralmagic/DeepSeek-R1-Distill-Llama-70B-quantized.w8a8",
+        "neuralmagic/DeepSeek-R1-Distill-Qwen-32B-quantized.w8a8",
+        "vllm-ascend/Qwen3-235B-A22B-W8A8",
+        "aleoyang/Qwen3-32B-w8a8-MindIE",
+        "TensorLake/DeepSeek-R1-0528-W8A8-MindIE",
+        "vllm-ascend/DeepSeek-V3-W8A8",
+        "Eco-Tech/GLM-4.7-W8A8",
+        "ponyioy/Qwen3-235B-A22B-Thinking-2507-W8A8"
+      ]
+    },
+    {
+      "key": "awq",
+      "label": "AWQ",
+      "stream": "三、权重压缩 (PTQ)",
+      "object": "仅权重",
+      "count": 2000,
+      "pct_all": 1.1409,
+      "pct_quantized": 5.7657,
+      "examples": [
+        "Qwen/Qwen2.5-VL-72B-Instruct-AWQ",
+        "Qwen/Qwen2.5-VL-7B-Instruct-AWQ",
+        "Qwen/Qwen3-32B-AWQ",
+        "Qwen/QwQ-32B-AWQ",
+        "Qwen/Qwen2.5-VL-3B-Instruct-AWQ",
+        "Qwen/Qwen2.5-VL-32B-Instruct-AWQ",
+        "Qwen/Qwen2.5-32B-Instruct-AWQ",
+        "Qwen/Qwen2.5-72B-Instruct-AWQ"
+      ]
+    },
+    {
+      "key": "gptq",
+      "label": "GPTQ",
+      "stream": "三、权重压缩 (PTQ)",
+      "object": "仅权重",
+      "count": 1887,
+      "pct_all": 1.0764,
+      "pct_quantized": 5.4399,
+      "examples": [
+        "Qwen/Qwen1.5-14B-Chat-GPTQ-Int4",
+        "Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen1.5-7B-Chat-GPTQ-Int4",
+        "Qwen/Qwen1.5-72B-Chat-GPTQ-Int4",
+        "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen2-72B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen3-0.6B-GPTQ-Int8"
+      ]
+    },
+    {
+      "key": "hqq",
+      "label": "HQQ",
+      "stream": "三、权重压缩 (PTQ)",
+      "object": "仅权重",
+      "count": 86,
+      "pct_all": 0.0491,
+      "pct_quantized": 0.2479,
+      "examples": [
+        "mobiuslabsgmbh/Llama-2-7b-chat-hf-4bit_g64-HQQ",
+        "PrunaAI/maicomputer-alpaca-native-HQQ-4bit-smashed",
+        "PrunaAI/ai21labs-AI21-Jamba-Reasoning-3B-HQQ-8bit-smashed",
+        "PrunaAI/ByteDance-Seed-Stable-DiffCoder-8B-Instruct-HQQ-4bit-smashed",
+        "PrunaAI/sarvamai-sarvam-1-HQQ-4bit-smashed",
+        "PrunaAI/Tiiny-SmallThinker-3B-Preview-HQQ-8bit-smashed",
+        "PrunaAI/sarvamai-sarvam-1-HQQ-8bit-smashed",
+        "PrunaAI/WeiboAI-VibeThinker-1.5B-HQQ-8bit-smashed"
+      ]
+    },
+    {
+      "key": "exl2",
+      "label": "EXL2",
+      "stream": "三、权重压缩 (PTQ)",
+      "object": "仅权重",
+      "count": 781,
+      "pct_all": 0.4455,
+      "pct_quantized": 2.2515,
+      "examples": [
+        "bartowski/Code-Llama-3-8B-exl2",
+        "bartowski/Pantheon-RP-1.5-12b-Nemo-exl2",
+        "Eigeen/Xwin-LM-13B-V0.2-8bpw-exl2",
+        "bartowski/deepseek-coder-7b-base-v1.5-exl2",
+        "bartowski/deepseek-coder-7b-instruct-v1.5-exl2",
+        "IntervitensInc/Qwen2-72b-4.25bpw-exl2",
+        "bartowski/DeepSeek-R1-Distill-Qwen-14B-exl2",
+        "zerofata/L3.3-MS-unnamed-V0.5-4.5bpw-h6-exl2"
+      ]
+    },
+    {
+      "key": "gguf",
+      "label": "GGUF",
+      "stream": "四、混合架构与边缘侧",
+      "object": "仅权重/混合",
+      "count": 17310,
+      "pct_all": 9.8745,
+      "pct_quantized": 49.902,
+      "examples": [
+        "unsloth/Qwen3.5-9B-GGUF",
+        "unsloth/Qwen3.5-27B-GGUF",
+        "LocoreMind/LocoOperator-4B",
+        "unsloth/Qwen3.5-35B-A3B-GGUF",
+        "TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+        "wikeeyang/Real-Qwen-Image-V2",
+        "dengzha0/flux_collection",
+        "modelscope_mp_129362455/ms_test_model_20250120-6"
+      ]
+    },
+    {
+      "key": "spqr",
+      "label": "SpQR",
+      "stream": "四、混合架构与边缘侧",
+      "object": "混合精度",
+      "count": 0,
+      "pct_all": 0.0,
+      "pct_quantized": 0.0,
+      "examples": []
+    },
+    {
+      "key": "nf4",
+      "label": "NF4",
+      "stream": "五、微调专属规范",
+      "object": "仅权重",
+      "count": 41,
+      "pct_all": 0.0234,
+      "pct_quantized": 0.1182,
+      "examples": [
+        "livehouse/flux1-dev-bnb-nf4-v2",
+        "ai-modelscope/flux1-dev-bnb-nf4",
+        "cjc1887415157/flux1-nf4",
+        "wikeeyang/Emu35-NF4",
+        "hf-diffusers/FLUX.1-Fill-dev-nf4",
+        "AiLieLemon/flux-kontext-nf4",
+        "Astro202/llama-joycaption-beta-one-hf-llava-nf4",
+        "livehouse/llama-joycaption-alpha-two-hf-llava-nf4"
+      ]
+    },
+    {
+      "key": "aqlm_quip",
+      "label": "AQLM / QuIP#",
+      "stream": "六、极限压缩与未来架构",
+      "object": "仅权重",
+      "count": 29,
+      "pct_all": 0.0165,
+      "pct_quantized": 0.0836,
+      "examples": [
+        "TechxGenus-MS/deepseek-coder-7b-instruct-v1.5-AQLM",
+        "TechxGenus-MS/deepseek-coder-7b-base-v1.5-AQLM",
+        "AI-ModelScope/Llama-2-7b-AQLM-2Bit-1x16-hf",
+        "Vikhrmodels/Vikhr-7B-instruct_0.2-AQLM",
+        "nm-testing/Llama-3.2-1B-Instruct-quip-w4a16",
+        "nm-testing/Llama-3.1-8B-Instruct-quip-w4a16",
+        "nm-testing/Meta-Llama-3-8B-Instruct-quip-w4a16",
+        "Efficient-ML/LLaMA-3-8B-QuIP-2bit"
+      ]
+    },
+    {
+      "key": "bitnet",
+      "label": "BitNet b1.58",
+      "stream": "六、极限压缩与未来架构",
+      "object": "架构重构",
+      "count": 46,
+      "pct_all": 0.0262,
+      "pct_quantized": 0.1326,
+      "examples": [
+        "AI-ModelScope/bitnet-b1.58-2B-4T",
+        "AI-ModelScope/bitnet-b1.58-2B-4T-bf16",
+        "microsoft/bitnet-b1.58-2B-4T",
+        "tiiuae/Falcon3-10B-Instruct-1.58bit",
+        "microsoft/bitnet-b1.58-2B-4T-bf16",
+        "mlx-community/bitnet-b1.58-2B-4T-4bit",
+        "budecosystem/boomer-bitnet-634m",
+        "onnx-community/Bitnet-SmolLM-135M-ONNX"
+      ]
+    },
+    {
+      "key": "int8_generic",
+      "label": "INT8 / 8-bit generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 1599,
+      "pct_all": 0.9122,
+      "pct_quantized": 4.6097,
+      "examples": [
+        "ruoying425/8bit",
+        "ModelE/8bit-qwen-image-edit-2",
+        "ruoying425/8bit-v1",
+        "Qwen/Qwen-14B-Chat-Int8",
+        "okwinds/DeepSeek-R1-Distill-Qwen-14B-Int8-W8A16",
+        "ZhipuAI/ChatGLM-6B-int8",
+        "Qwen/Qwen-1_8B-Chat-Int8",
+        "Qwen/Qwen-7B-Chat-Int8"
+      ]
+    },
+    {
+      "key": "int4_generic",
+      "label": "INT4 / 4-bit generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 2752,
+      "pct_all": 1.5699,
+      "pct_quantized": 7.9336,
+      "examples": [
+        "ZhipuAI/chatglm2-6b",
+        "Qwen/Qwen-72B-Chat-Int4",
+        "ZhipuAI/chatglm2-6b-int4",
+        "Qwen/Qwen-VL-Chat-Int4",
+        "Qwen/Qwen-1_8B-Chat-Int4",
+        "TongyiFinance/Tongyi-Finance-14B-Chat-Int4",
+        "Genius-Society/chatglm_6b",
+        "OpenBMB/MiniCPM-Llama3-V-2_5-int4"
+      ]
+    },
+    {
+      "key": "int3_generic",
+      "label": "INT3 / 3-bit generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 4250,
+      "pct_all": 2.4244,
+      "pct_quantized": 12.2521,
+      "examples": [
+        "AImissyou/3D",
+        "VoidOc/flux_pop_mart_1",
+        "xxcdesign/3Dcartoon",
+        "iLaboo/wusaqi",
+        "wmh666/majicflus_nezha02",
+        "VoidOc/Golden_Everything",
+        "yinjiaqi/3D_character_model",
+        "codexsharp/nano-banana-hd"
+      ]
+    },
+    {
+      "key": "int2_generic",
+      "label": "INT2 / 2-bit generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 62,
+      "pct_all": 0.0354,
+      "pct_quantized": 0.1787,
+      "examples": [
+        "QWQ114514123/shenchaoweiba-w2",
+        "zzzzzz77777/Qversion2.0",
+        "lxqyyds/W2",
+        "AI-ModelScope/Yi_34B_Chat_2bit",
+        "OPEA/Qwen2.5-72B-Instruct-int2-sym-inc",
+        "OPEA/DeepSeek-R1-int2-mixed-sym-inc",
+        "mlx-community/DeepSeek-R1-2bit",
+        "mlx-community/dolphin-2.9.1-qwen-110b-2bit"
+      ]
+    },
+    {
+      "key": "q8_generic",
+      "label": "Q8 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 164,
+      "pct_all": 0.0936,
+      "pct_quantized": 0.4728,
+      "examples": [
+        "mlx-community/FuseO1-DeepSeekR1-Qwen2.5-Coder-32B-Preview-Q8",
+        "xiaowangge/conan-embedding-v1-q8",
+        "nightmedia/Gemma3-27B-it-vl-HERETIC-GLM4.7-2200x-cp515-q8-mlx",
+        "mlx-community/Kimi-K2.5-mlx-DQ3_K_M-q8",
+        "nightmedia/Qwen2.5-3X7B-CoderInstruct-OlympicCoder-MS-Next-Coder-24B-v1-128k-q8-mlx",
+        "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-12B-Brainstorm20x-q8-mlx",
+        "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-6B-Brainstorm20x-q8-mlx",
+        "nightmedia/Qwen3-Code-Reasoning-Instruct-6B-Brainstorm20x-q8-mlx"
+      ]
+    },
+    {
+      "key": "q6_generic",
+      "label": "Q6 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 129,
+      "pct_all": 0.0736,
+      "pct_quantized": 0.3719,
+      "examples": [
+        "nanyu693/Q6",
+        "nightmedia/Tongyi-DeepResearch-30B-A3B-q6-hi-mlx",
+        "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-q6-mlx",
+        "nightmedia/Qwen3-Shining-Valiant-Instruct-CODER-Reasoning-2.7B-q6-mlx",
+        "nightmedia/Gemma3-27B-it-vl-HERETIC-GLM4.7-2200x-cp515-q6-mlx",
+        "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-128k-ctx-q6-mlx",
+        "nightmedia/Gemma-3-27b-it-HERETIC-Gemini-1000x-Deep-Reasoning-q6-mlx",
+        "nightmedia/Gemma-3-27b-it-HERETIC-Gemini-Deep-Reasoning-q6-mlx"
+      ]
+    },
+    {
+      "key": "q5_generic",
+      "label": "Q5 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 55,
+      "pct_all": 0.0314,
+      "pct_quantized": 0.1586,
+      "examples": [
+        "tangchuc0137/q5",
+        "nightmedia/unsloth-gpt-oss-120b-q5-hi-mlx",
+        "nightmedia/LFM2-350M-Math-q5-hi-mlx",
+        "google/seahorse-large-q5",
+        "google/seahorse-xxl-q5",
+        "nightmedia/Qwen3-Coder-30B-A3B-Instruct-1m-q5-hi-mlx",
+        "nightmedia/unsloth-GLM-4.5-Air-q5-mlx",
+        "nightmedia/Qwen3-Coder-53B-A3B-Instruct-TOTAL-RECALL-v2-MASTER-CODER-L-q5-hi-mlx"
+      ]
+    },
+    {
+      "key": "q4_generic",
+      "label": "Q4 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 114,
+      "pct_all": 0.065,
+      "pct_quantized": 0.3286,
+      "examples": [
+        "zimageapp/z-image-turbo-q4",
+        "google/gemma-3-270m-it-qat-q4_0-unquantized",
+        "google/embeddinggemma-300m-qat-q4_0-unquantized",
+        "google/gemma-3-270m-qat-q4_0-unquantized",
+        "google/gemma-3-12b-it-qat-q4_0-unquantized",
+        "Lightricks/gemma-3-12b-it-qat-q4_0-unquantized",
+        "mlx-community/Flux-1.lite-8B-MLX-Q4",
+        "nightmedia/unsloth-gpt-oss-120b-q4-hi-mlx"
+      ]
+    },
+    {
+      "key": "q3_generic",
+      "label": "Q3 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 73,
+      "pct_all": 0.0416,
+      "pct_quantized": 0.2104,
+      "examples": [
+        "xiiian/Q.3",
+        "z647799842/Q3",
+        "bunny0628/Bunny-Embroidery-Q3",
+        "duyongjun/HEMEI-Q3",
+        "Q1666888/Q3",
+        "allura-forge/allura-forge-q3-30b-ft-ep2-merged",
+        "allura-forge/allura-forge-q3-8b-rc1",
+        "allura-forge/q3-sft-take2-kto-step144-adpt"
+      ]
+    },
+    {
+      "key": "q2_generic",
+      "label": "Q2 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 773,
+      "pct_all": 0.441,
+      "pct_quantized": 2.2284,
+      "examples": [
+        "bunny0628/Bunny-Embroidery-Q2",
+        "tangchuc0137/q2",
+        "IceWindai/byna-Q2",
+        "a996483259/Q2",
+        "loveshanhuo/q2",
+        "henhuohuo/q2",
+        "duyongjun/HEMEI-Q2",
+        "Q1666888/Q2"
+      ]
+    },
+    {
+      "key": "fp4_generic",
+      "label": "FP4 generic",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 89,
+      "pct_all": 0.0508,
+      "pct_quantized": 0.2566,
+      "examples": [
+        "nv-community/DeepSeek-R1-FP4",
+        "nv-community/Qwen3-30B-A3B-FP4",
+        "nv-community/Qwen3-235B-A22B-FP4",
+        "nv-community/Qwen3-32B-FP4",
+        "qingcheng-ai/Qwen3-32B-fp4",
+        "nv-community/DeepSeek-V3-0324-FP4",
+        "nv-community/DeepSeek-R1-0528-FP4-v2",
+        "tonera/Beyond_Reality_Zimage_v2_svdq"
+      ]
+    },
+    {
+      "key": "quantized_unspecified",
+      "label": "Quantized unspecified",
+      "stream": "七、通用位宽命名（未明确算法）",
+      "object": "未明确",
+      "count": 493,
+      "pct_all": 0.2812,
+      "pct_quantized": 1.4212,
+      "examples": [
+        "axin9470/LOJ2.0",
+        "modelscope_mp_129362455/test1111quantized",
+        "CuteOwls666/BrightLeafBooks",
+        "Nurburgring/BEYOND_REALITY_Z_IMAGE",
+        "Qwen/Qwen3-Embedding-0.6B",
+        "Qwen/Qwen1.5-14B-Chat",
+        "Qwen/Qwen1.5-0.5B-Chat",
+        "Qwen/Qwen3-Embedding-8B"
+      ]
+    }
+  ],
+  "object_rows": [
+    {
+      "object": "仅权重/混合",
+      "count": 17310,
+      "pct_all": 9.8745,
+      "pct_quantized": 49.902
+    },
+    {
+      "object": "未明确",
+      "count": 10553,
+      "pct_all": 6.02,
+      "pct_quantized": 30.4226
+    },
+    {
+      "object": "仅权重",
+      "count": 4824,
+      "pct_all": 2.7519,
+      "pct_quantized": 13.9068
+    },
+    {
+      "object": "权重+激活",
+      "count": 1955,
+      "pct_all": 1.1152,
+      "pct_quantized": 5.636
+    },
+    {
+      "object": "架构重构",
+      "count": 46,
+      "pct_all": 0.0262,
+      "pct_quantized": 0.1326
+    }
+  ],
+  "notes": [
+    "本统计基于 ModelScope 列表接口字段（Name/ChineseName/Tags/OfficialTags/Libraries/Frameworks/ModelType/Description）做规则匹配，不读取 README 全文。",
+    "为了贴合用户给定 taxonomy，报告保留六大核心流派；同时新增“七、通用位宽命名（未明确算法）”作为补充类，用于承接 int3/int4/q4/8bit 等没有明确算法名的模型。",
+    "“标准 FP8”实际是从命名和标签中识别的 FP8 / E4M3 / E5M2；无法完全区分其是否为用户文中所述硬件原生标准实现。",
+    "“SmoothQuant / W8A8”采用名称关键词近似识别；只写 W8A8 的模型不一定严格等价于 SmoothQuant。",
+    "GGUF 这里被放在“混合架构与边缘侧”；它在工程上更偏封装/生态格式，不完全等同于某一种底层量化算法。"
+  ]
+}
