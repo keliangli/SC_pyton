@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="600.0" y="48" text-anchor="middle" font-size="28" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">ModelScope 量化生态分布（按大类归并）</text>
+<text x="600.0" y="82" text-anchor="middle" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">基于主类别统计重新归并 · 统计日期 2026-03-09</text>
+<text x="600.0" y="108" text-anchor="middle" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">量化相关模型 35,901</text>
+<line x1="220.0" y1="120" x2="220.0" y2="650" stroke="#e5e7eb" stroke-width="1"/>
+<text x="220.0" y="678" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">0</text>
+<line x1="392.0" y1="120" x2="392.0" y2="650" stroke="#e5e7eb" stroke-width="1"/>
+<text x="392.0" y="678" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">3,465</text>
+<line x1="564.0" y1="120" x2="564.0" y2="650" stroke="#e5e7eb" stroke-width="1"/>
+<text x="564.0" y="678" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">6,930</text>
+<line x1="736.0" y1="120" x2="736.0" y2="650" stroke="#e5e7eb" stroke-width="1"/>
+<text x="736.0" y="678" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">10,395</text>
+<line x1="908.0" y1="120" x2="908.0" y2="650" stroke="#e5e7eb" stroke-width="1"/>
+<text x="908.0" y="678" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">13,860</text>
+<line x1="1080.0" y1="120" x2="1080.0" y2="650" stroke="#e5e7eb" stroke-width="1"/>
+<text x="1080.0" y="678" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">17,325</text>
+<text x="204" y="146" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">1-bit</text>
+<rect x="220" y="120" width="1.6" height="40" rx="6" fill="#59A14F"/>
+<text x="233.6" y="146" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">32  (0.1%)</text>
+<text x="204" y="204" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">5-bit</text>
+<rect x="220" y="178" width="15.7" height="40" rx="6" fill="#59A14F"/>
+<text x="247.7" y="204" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">317  (0.9%)</text>
+<text x="204" y="262" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">6-bit</text>
+<rect x="220" y="236" width="34.2" height="40" rx="6" fill="#59A14F"/>
+<text x="266.2" y="262" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">689  (1.9%)</text>
+<text x="204" y="320" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">Other</text>
+<rect x="220" y="294" width="38.8" height="40" rx="6" fill="#59A14F"/>
+<text x="270.8" y="320" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">781  (2.2%)</text>
+<text x="204" y="378" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">EXL2</text>
+<rect x="220" y="352" width="38.8" height="40" rx="6" fill="#59A14F"/>
+<text x="270.8" y="378" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">781  (2.2%)</text>
+<text x="204" y="436" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">2-bit</text>
+<rect x="220" y="410" width="42.4" height="40" rx="6" fill="#59A14F"/>
+<text x="274.4" y="436" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">855  (2.4%)</text>
+<text x="204" y="494" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">8-bit</text>
+<rect x="220" y="468" width="165.6" height="40" rx="6" fill="#59A14F"/>
+<text x="397.6" y="494" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">3,336  (9.3%)</text>
+<text x="204" y="552" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">3-bit</text>
+<rect x="220" y="526" width="214.8" height="40" rx="6" fill="#59A14F"/>
+<text x="446.8" y="552" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">4,327  (12.1%)</text>
+<text x="204" y="610" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">4-bit</text>
+<rect x="220" y="584" width="370.2" height="40" rx="6" fill="#E15759"/>
+<text x="602.2" y="610" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">7,458  (20.8%)</text>
+<text x="204" y="668" text-anchor="end" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">GGUF</text>
+<rect x="220" y="642" width="860.0" height="40" rx="6" fill="#E15759"/>
+<text x="1092.0" y="668" text-anchor="start" font-size="15" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#1f2937">17,325  (48.3%)</text>
+<text x="600.0" y="732" text-anchor="middle" font-size="13" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#6b7280">归并口径：4-bit 含 AWQ/GPTQ/FP4/Q4/INT4；8-bit 含 INT8/FP8/Q8；GGUF 单列。</text>
+</svg>

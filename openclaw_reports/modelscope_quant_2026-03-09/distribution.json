@@ -1,0 +1,1385 @@
+{
+  "generated_at": "2026-03-09",
+  "source": "ModelScope api/v1/models list endpoint",
+  "total_models": 175269,
+  "quantized_total": 35901,
+  "quantized_ratio": 20.4834,
+  "primary_counts": {
+    "none": 139368,
+    "gguf": 17325,
+    "fp8": 1500,
+    "int3": 4254,
+    "quantized-unspecified": 628,
+    "int8": 1674,
+    "q2": 774,
+    "q3": 73,
+    "int2": 81,
+    "q5": 55,
+    "q6": 129,
+    "int4": 3116,
+    "awq": 2004,
+    "gptq": 1900,
+    "int1": 32,
+    "nf4": 41,
+    "q4": 113,
+    "fp4": 325,
+    "6bit-generic": 560,
+    "5bit-generic": 262,
+    "q8": 162,
+    "hqq": 85,
+    "exl2": 781,
+    "aqlm": 24,
+    "eetq": 3
+  },
+  "primary_top20": [
+    {
+      "category": "none",
+      "count": 139368,
+      "pct_all": 79.5166,
+      "pct_quantized": 388.2009
+    },
+    {
+      "category": "gguf",
+      "count": 17325,
+      "pct_all": 9.8848,
+      "pct_quantized": 48.2577
+    },
+    {
+      "category": "int3",
+      "count": 4254,
+      "pct_all": 2.4271,
+      "pct_quantized": 11.8493
+    },
+    {
+      "category": "int4",
+      "count": 3116,
+      "pct_all": 1.7778,
+      "pct_quantized": 8.6794
+    },
+    {
+      "category": "awq",
+      "count": 2004,
+      "pct_all": 1.1434,
+      "pct_quantized": 5.582
+    },
+    {
+      "category": "gptq",
+      "count": 1900,
+      "pct_all": 1.084,
+      "pct_quantized": 5.2923
+    },
+    {
+      "category": "int8",
+      "count": 1674,
+      "pct_all": 0.9551,
+      "pct_quantized": 4.6628
+    },
+    {
+      "category": "fp8",
+      "count": 1500,
+      "pct_all": 0.8558,
+      "pct_quantized": 4.1782
+    },
+    {
+      "category": "exl2",
+      "count": 781,
+      "pct_all": 0.4456,
+      "pct_quantized": 2.1754
+    },
+    {
+      "category": "q2",
+      "count": 774,
+      "pct_all": 0.4416,
+      "pct_quantized": 2.1559
+    },
+    {
+      "category": "quantized-unspecified",
+      "count": 628,
+      "pct_all": 0.3583,
+      "pct_quantized": 1.7493
+    },
+    {
+      "category": "6bit-generic",
+      "count": 560,
+      "pct_all": 0.3195,
+      "pct_quantized": 1.5598
+    },
+    {
+      "category": "fp4",
+      "count": 325,
+      "pct_all": 0.1854,
+      "pct_quantized": 0.9053
+    },
+    {
+      "category": "5bit-generic",
+      "count": 262,
+      "pct_all": 0.1495,
+      "pct_quantized": 0.7298
+    },
+    {
+      "category": "q8",
+      "count": 162,
+      "pct_all": 0.0924,
+      "pct_quantized": 0.4512
+    },
+    {
+      "category": "q6",
+      "count": 129,
+      "pct_all": 0.0736,
+      "pct_quantized": 0.3593
+    },
+    {
+      "category": "q4",
+      "count": 113,
+      "pct_all": 0.0645,
+      "pct_quantized": 0.3148
+    },
+    {
+      "category": "hqq",
+      "count": 85,
+      "pct_all": 0.0485,
+      "pct_quantized": 0.2368
+    },
+    {
+      "category": "int2",
+      "count": 81,
+      "pct_all": 0.0462,
+      "pct_quantized": 0.2256
+    },
+    {
+      "category": "q3",
+      "count": 73,
+      "pct_all": 0.0417,
+      "pct_quantized": 0.2033
+    }
+  ],
+  "multi_label_counts": {
+    "gguf": 17352,
+    "fp8": 1529,
+    "int3": 5269,
+    "q2": 813,
+    "quantized-unspecified": 628,
+    "int8": 3094,
+    "8bit-generic": 2309,
+    "q3": 79,
+    "int2": 1093,
+    "q5": 64,
+    "q6": 199,
+    "int4": 5076,
+    "awq": 2004,
+    "gptq": 1911,
+    "q4": 221,
+    "4bit-generic": 3567,
+    "5bit-generic": 1234,
+    "6bit-generic": 1544,
+    "int1": 1143,
+    "q8": 423,
+    "nf4": 46,
+    "fp4": 337,
+    "hqq": 85,
+    "exl2": 781,
+    "aqlm": 24,
+    "eetq": 3
+  },
+  "multi_label_top30": [
+    {
+      "category": "gguf",
+      "count": 17352,
+      "pct_all": 9.9002,
+      "pct_quantized": 48.3329,
+      "examples": [
+        "unsloth/Qwen3.5-9B-GGUF",
+        "unsloth/Qwen3.5-27B-GGUF",
+        "LocoreMind/LocoOperator-4B",
+        "unsloth/Qwen3.5-35B-A3B-GGUF",
+        "TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+        "wikeeyang/Real-Qwen-Image-V2",
+        "dengzha0/flux_collection",
+        "modelscope_mp_129362455/ms_test_model_20250120-6",
+        "unsloth/DeepSeek-R1-GGUF",
+        "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF"
+      ]
+    },
+    {
+      "category": "int3",
+      "count": 5269,
+      "pct_all": 3.0062,
+      "pct_quantized": 14.6765,
+      "examples": [
+        "DiffSynth-Studio/FLUX.1-Kontext-dev-lora-SuperOutpainting",
+        "kkdddd/Paper-cut",
+        "AImissyou/3D",
+        "VoidOc/flux_pop_mart_1",
+        "xxcdesign/3Dcartoon",
+        "iLaboo/wusaqi",
+        "wmh666/majicflus_nezha02",
+        "VoidOc/Golden_Everything",
+        "yinjiaqi/3D_character_model",
+        "codexsharp/nano-banana-hd"
+      ]
+    },
+    {
+      "category": "int4",
+      "count": 5076,
+      "pct_all": 2.8961,
+      "pct_quantized": 14.1389,
+      "examples": [
+        "ZhipuAI/chatglm2-6b",
+        "Qwen/Qwen-72B-Chat-Int4",
+        "ZhipuAI/chatglm2-6b-int4",
+        "Qwen/Qwen-VL-Chat-Int4",
+        "Qwen/Qwen-1_8B-Chat-Int4",
+        "codefuse-ai/CodeFuse-CodeLlama-34B-4bits",
+        "Qwen/Qwen1.5-14B-Chat-GPTQ-Int4",
+        "Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4",
+        "TongyiFinance/Tongyi-Finance-14B-Chat-Int4",
+        "Qwen/Qwen1.5-7B-Chat-GPTQ-Int4"
+      ]
+    },
+    {
+      "category": "4bit-generic",
+      "count": 3567,
+      "pct_all": 2.0352,
+      "pct_quantized": 9.9357,
+      "examples": [
+        "LLM-Research/glm-4-9b-chat-GGUF",
+        "FunAGI/Qwen2.5-Omni-7B-GPTQ-4bit",
+        "DavidWen2025/Qwen3-VL-8B-Instruct-4bit-GPTQ",
+        "cpatonn-mirror/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit",
+        "unsloth/DeepSeek-R1-Distill-Qwen-32B-bnb-4bit",
+        "HinGwenWoong/streamer-sales-lelemiao-7b-4bit",
+        "unsloth/QwQ-32B-unsloth-bnb-4bit",
+        "cyankiwi/Qwen3.5-27B-AWQ-4bit",
+        "unsloth/Qwen3-8B-unsloth-bnb-4bit",
+        "unsloth/Qwen3-14B-unsloth-bnb-4bit"
+      ]
+    },
+    {
+      "category": "int8",
+      "count": 3094,
+      "pct_all": 1.7653,
+      "pct_quantized": 8.6181,
+      "examples": [
+        "ruoying425/8bit",
+        "SUSUSUCK/8bitgirl",
+        "ModelE/8bit-qwen-image-edit-2",
+        "yvyouxin/8bits-11",
+        "ruoying425/8bit-v1",
+        "yvyouxin/8bits-beta",
+        "yvyouxin/8bits-1",
+        "yvyouxin/8bits-2",
+        "yvyouxin/8bits-5",
+        "yvyouxin/8bits-3"
+      ]
+    },
+    {
+      "category": "8bit-generic",
+      "count": 2309,
+      "pct_all": 1.3174,
+      "pct_quantized": 6.4316,
+      "examples": [
+        "ruoying425/8bit",
+        "ModelE/8bit-qwen-image-edit-2",
+        "ruoying425/8bit-v1",
+        "LLM-Research/glm-4-9b-chat-GGUF",
+        "mlx-community/DeepSeek-R1-Distill-Llama-70B-8bit",
+        "Disty0/Z-Image-Turbo-SDNQ-int8",
+        "mlx-community/DeepSeek-v3-0324-8bit",
+        "AI-ModelScope/WizardLM-2-7B-GGUF",
+        "Qwen/Qwen3-8B-MLX-8bit",
+        "Qwen/Qwen3-235B-A22B-MLX-8bit"
+      ]
+    },
+    {
+      "category": "awq",
+      "count": 2004,
+      "pct_all": 1.1434,
+      "pct_quantized": 5.582,
+      "examples": [
+        "Qwen/Qwen2.5-VL-72B-Instruct-AWQ",
+        "Qwen/Qwen2.5-VL-7B-Instruct-AWQ",
+        "Qwen/Qwen3-32B-AWQ",
+        "Qwen/QwQ-32B-AWQ",
+        "Qwen/Qwen2.5-VL-3B-Instruct-AWQ",
+        "Qwen/Qwen2.5-VL-32B-Instruct-AWQ",
+        "Qwen/Qwen2.5-32B-Instruct-AWQ",
+        "Qwen/Qwen2.5-72B-Instruct-AWQ",
+        "cognitivecomputations/DeepSeek-R1-awq",
+        "Qwen/Qwen3-8B-AWQ"
+      ]
+    },
+    {
+      "category": "gptq",
+      "count": 1911,
+      "pct_all": 1.0903,
+      "pct_quantized": 5.323,
+      "examples": [
+        "Qwen/Qwen1.5-14B-Chat-GPTQ-Int4",
+        "Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen1.5-7B-Chat-GPTQ-Int4",
+        "Qwen/Qwen1.5-72B-Chat-GPTQ-Int4",
+        "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen2-72B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen3-0.6B-GPTQ-Int8",
+        "Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int4",
+        "Qwen/Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4"
+      ]
+    },
+    {
+      "category": "6bit-generic",
+      "count": 1544,
+      "pct_all": 0.8809,
+      "pct_quantized": 4.3007,
+      "examples": [
+        "LLM-Research/glm-4-9b-chat-GGUF",
+        "okwinds/DeepSeek-R1-Distill-Qwen-32B-MLX-6bit",
+        "AI-ModelScope/WizardLM-2-7B-GGUF",
+        "Qwen/Qwen3-8B-MLX-6bit",
+        "LLM-Research/Mistral-7B-Instruct-v0.3-GGUF",
+        "LLM-Research/glm-4-9b-chat-1m-GGUF",
+        "Qwen/Qwen3-4B-MLX-6bit",
+        "Qwen/Qwen3-235B-A22B-MLX-6bit",
+        "inferencerlabs/GLM-5-MLX-5.6bit",
+        "AI-ModelScope/WizardLM-2-8x22B-GGUF"
+      ]
+    },
+    {
+      "category": "fp8",
+      "count": 1529,
+      "pct_all": 0.8724,
+      "pct_quantized": 4.2589,
+      "examples": [
+        "MusePublic/Qwen-image-fp8",
+        "ONETranquil/F.1-dev-fp8",
+        "muse/Wan2.2-TI2V-5B-FP8",
+        "MusePublic/FLUX.1-dev-fp8-dit",
+        "MusePublic/36_VAE_SD_1_5",
+        "SGFTGYXZG8/chengshi-jianzhu",
+        "muse/Wan2.1-T2V-1.3B-FP8",
+        "ikonion/hyx.260207.realreveal5.fp8",
+        "zzjjbb1985/Qwen-Image-Editv2509-zjb1118-fp8",
+        "lazywolf/FLUX-FP8-YURI"
+      ]
+    },
+    {
+      "category": "5bit-generic",
+      "count": 1234,
+      "pct_all": 0.7041,
+      "pct_quantized": 3.4372,
+      "examples": [
+        "LLM-Research/glm-4-9b-chat-GGUF",
+        "AI-ModelScope/WizardLM-2-7B-GGUF",
+        "LLM-Research/Mistral-7B-Instruct-v0.3-GGUF",
+        "LLM-Research/glm-4-9b-chat-1m-GGUF",
+        "AI-ModelScope/WizardLM-2-8x22B-GGUF",
+        "hf/BennyDaBall-qwen3-4b-Z-Image-Engineer-V2-5bit-MLX",
+        "inferencerlabs/GLM-4.7-MLX-6.5bit",
+        "MaziyarPanahi/Qwen3-4B-Instruct-2507-GGUF",
+        "MaziyarPanahi/Falcon3-1B-Base-GGUF",
+        "MaziyarPanahi/llama3-8B-DarkIdol-1.2-GGUF"
+      ]
+    },
+    {
+      "category": "int1",
+      "count": 1143,
+      "pct_all": 0.6521,
+      "pct_quantized": 3.1838,
+      "examples": [
+        "HiDream-ai/HiDream-I1-Full",
+        "AI-ModelScope/bitnet-b1.58-2B-4T",
+        "mradermacher/Huihui-Qwen3-8B-abliterated-v2-i1-GGUF",
+        "AI-ModelScope/bitnet-b1.58-2B-4T-gguf",
+        "mradermacher/DeepSeek-R1-Distill-Qwen-14B-abliterated-v2-remap-i1-GGUF",
+        "mradermacher/Huihui-Qwen3-14B-abliterated-v2-i1-GGUF",
+        "AI-ModelScope/bitnet-b1.58-2B-4T-bf16",
+        "mradermacher/Josiefied-Qwen3-14B-abliterated-v3-i1-GGUF",
+        "mradermacher/Meta-Llama-3.1-8B-Instruct-abliterated-ICONN-1-BasicChat-i1-GGUF",
+        "microsoft/bitnet-b1.58-2B-4T"
+      ]
+    },
+    {
+      "category": "int2",
+      "count": 1093,
+      "pct_all": 0.6236,
+      "pct_quantized": 3.0445,
+      "examples": [
+        "QWQ114514123/shenchaoweiba-w2",
+        "zzzzzz77777/Qversion2.0",
+        "lxqyyds/W2",
+        "LLM-Research/glm-4-9b-chat-GGUF",
+        "AI-ModelScope/Yi_34B_Chat_2bit",
+        "AI-ModelScope/WizardLM-2-7B-GGUF",
+        "LLM-Research/Mistral-7B-Instruct-v0.3-GGUF",
+        "LLM-Research/glm-4-9b-chat-1m-GGUF",
+        "AI-ModelScope/WizardLM-2-8x22B-GGUF",
+        "AngelSlim/HY-1.8B-2Bit-GGUF"
+      ]
+    },
+    {
+      "category": "q2",
+      "count": 813,
+      "pct_all": 0.4639,
+      "pct_quantized": 2.2646,
+      "examples": [
+        "fg43ghhfd/mox-daoguo-Q2",
+        "bunny0628/Bunny-Embroidery-Q2",
+        "tangchuc0137/q2",
+        "IceWindai/byna-Q2",
+        "a996483259/Q2",
+        "loveshanhuo/q2",
+        "lzkszsd888/Q2",
+        "henhuohuo/q2",
+        "duyongjun/HEMEI-Q2",
+        "Q1666888/Q2"
+      ]
+    },
+    {
+      "category": "exl2",
+      "count": 781,
+      "pct_all": 0.4456,
+      "pct_quantized": 2.1754,
+      "examples": [
+        "bartowski/Code-Llama-3-8B-exl2",
+        "bartowski/Pantheon-RP-1.5-12b-Nemo-exl2",
+        "Eigeen/Xwin-LM-13B-V0.2-8bpw-exl2",
+        "bartowski/deepseek-coder-7b-base-v1.5-exl2",
+        "bartowski/deepseek-coder-7b-instruct-v1.5-exl2",
+        "bartowski/DeepSeek-R1-Distill-Qwen-14B-exl2",
+        "IntervitensInc/Qwen2-72b-4.25bpw-exl2",
+        "zerofata/L3.3-MS-unnamed-V0.5-4.5bpw-h6-exl2",
+        "zerofata/L3.3-GeneticLemonade-Unleashed-v3-70B_4bpw-hb6-exl2",
+        "zerofata/L3.3-GeneticLemonade-Unleashed-v2.1-70B-6bpw-hb8-exl2"
+      ]
+    },
+    {
+      "category": "quantized-unspecified",
+      "count": 628,
+      "pct_all": 0.3583,
+      "pct_quantized": 1.7493,
+      "examples": [
+        "axin9470/LOJ2.0",
+        "modelscope_mp_129362455/test1111quantized",
+        "CuteOwls666/BrightLeafBooks",
+        "Qwen/Qwen3-Embedding-8B",
+        "Qwen/Qwen1.5-7B-Chat",
+        "Nurburgring/BEYOND_REALITY_Z_IMAGE",
+        "Qwen/Qwen3-Embedding-0.6B",
+        "Qwen/Qwen1.5-14B-Chat",
+        "Qwen/Qwen1.5-0.5B-Chat",
+        "Qwen/Qwen1.5-1.8B-Chat"
+      ]
+    },
+    {
+      "category": "q8",
+      "count": 423,
+      "pct_all": 0.2413,
+      "pct_quantized": 1.1782,
+      "examples": [
+        "yingda/gte-Qwen2-1.5B-instruct-GGUF",
+        "ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF",
+        "swift/llama3-8b-agent-instruct-v2-GGUF",
+        "yingda/bce-embedding-base_v1-GGUF",
+        "stepfun-ai/Step-3.5-Flash-GGUF-Q8_0",
+        "newsletter/Qwen3-0.6B-Base-Q8_0-GGUF",
+        "prithivMLmods/Qwen3-1.7B-ft-bf16-Q8_0-GGUF",
+        "ggml-org/Qwen3-4B-Thinking-2507-Q8_0-GGUF",
+        "YOYO-AI/Qwen3-VL-4B-YOYO-Instruct-Q8_0-GGUF",
+        "openfree/Qwen2.5-VL-32B-Instruct-Q8_0-GGUF"
+      ]
+    },
+    {
+      "category": "fp4",
+      "count": 337,
+      "pct_all": 0.1923,
+      "pct_quantized": 0.9387,
+      "examples": [
+        "nv-community/DeepSeek-R1-FP4",
+        "nv-community/Qwen3-30B-A3B-FP4",
+        "nv-community/Qwen3-235B-A22B-FP4",
+        "nv-community/Qwen3-32B-FP4",
+        "qingcheng-ai/Qwen3-32B-fp4",
+        "nv-community/DeepSeek-V3-0324-FP4",
+        "nv-community/DeepSeek-R1-0528-FP4-v2",
+        "hf/BennyDaBall-MiniMax-M2.5-REAP-139B-A10B-MXFP4",
+        "hf/GadflyII-GLM-4.7-Flash-MXFP4",
+        "nv-community/Qwen3-30B-A3B-NVFP4"
+      ]
+    },
+    {
+      "category": "q4",
+      "count": 221,
+      "pct_all": 0.1261,
+      "pct_quantized": 0.6156,
+      "examples": [
+        "CarbonAgent/llama-2-13b-chat.Q4",
+        "cjc1887415157/Tifa-Deepsex-14b-CoT-GGUF-Q4",
+        "zimageapp/z-image-turbo-q4",
+        "ggml-org/DeepSeek-R1-Distill-Qwen-1.5B-Q4_0-GGUF",
+        "OPEA/DeepSeek-R1-int4-sym-gguf-q4-0-inc",
+        "AI-ModelScope/gemma-3-12b-it-qat-q4_0-gguf",
+        "OpenBMB/MiniCPM-2B-dpo-q4_0-gguf",
+        "AI-ModelScope/gemma-3-1b-it-qat-q4_0-gguf",
+        "aliworkq/Qwen3-0.6B-Q4_0.GGUF",
+        "neuphonic/neutts-air-q4-gguf"
+      ]
+    },
+    {
+      "category": "q6",
+      "count": 199,
+      "pct_all": 0.1135,
+      "pct_quantized": 0.5543,
+      "examples": [
+        "nanyu693/Q6",
+        "Manojb/qwen2.5-coder-14b-instruct-q6_k.gguf",
+        "nightmedia/Tongyi-DeepResearch-30B-A3B-q6-hi-mlx",
+        "Manojb/qwen2.5-coder-7b-instruct-q6_k.gguf",
+        "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-q6-mlx",
+        "nightmedia/Qwen3-Shining-Valiant-Instruct-CODER-Reasoning-2.7B-q6-mlx",
+        "newsletter/Gemma-2-9B-It-SPPO-Iter3-Q6_K-GGUF",
+        "nightmedia/Gemma3-27B-it-vl-HERETIC-GLM4.7-2200x-cp515-q6-mlx",
+        "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-128k-ctx-q6-mlx",
+        "nightmedia/Gemma-3-27b-it-HERETIC-Gemini-Deep-Reasoning-q6-mlx"
+      ]
+    },
+    {
+      "category": "hqq",
+      "count": 85,
+      "pct_all": 0.0485,
+      "pct_quantized": 0.2368,
+      "examples": [
+        "mobiuslabsgmbh/Llama-2-7b-chat-hf-4bit_g64-HQQ",
+        "PrunaAI/maicomputer-alpaca-native-HQQ-4bit-smashed",
+        "PrunaAI/ai21labs-AI21-Jamba-Reasoning-3B-HQQ-8bit-smashed",
+        "PrunaAI/ByteDance-Seed-Stable-DiffCoder-8B-Instruct-HQQ-4bit-smashed",
+        "PrunaAI/sarvamai-sarvam-1-HQQ-4bit-smashed",
+        "PrunaAI/Tiiny-SmallThinker-3B-Preview-HQQ-8bit-smashed",
+        "PrunaAI/sarvamai-sarvam-1-HQQ-8bit-smashed",
+        "PrunaAI/WeiboAI-VibeThinker-1.5B-HQQ-8bit-smashed",
+        "PrunaAI/maya-research-maya1-HQQ-8bit-smashed",
+        "PrunaAI/Nanbeige-Nanbeige4.1-3B-HQQ-4bit-smashed"
+      ]
+    },
+    {
+      "category": "q3",
+      "count": 79,
+      "pct_all": 0.0451,
+      "pct_quantized": 0.22,
+      "examples": [
+        "xiiian/Q.3",
+        "z647799842/Q3",
+        "bunny0628/Bunny-Embroidery-Q3",
+        "duyongjun/HEMEI-Q3",
+        "Q1666888/Q3",
+        "zerofata/Q3.5-BlueStar-27B-gguf",
+        "allura-forge/allura-forge-q3-30b-ft-ep2-merged",
+        "allura-forge/allura-forge-q3-8b-rc1",
+        "allura-forge/q3-sft-take2-kto-step144-adpt",
+        "allura-forge/q3-8b-ft-adpt-ep1"
+      ]
+    },
+    {
+      "category": "q5",
+      "count": 64,
+      "pct_all": 0.0365,
+      "pct_quantized": 0.1783,
+      "examples": [
+        "tangchuc0137/q5",
+        "nightmedia/unsloth-gpt-oss-120b-q5-hi-mlx",
+        "prithivMLmods/Qwen2.5-Coder-7B-GGUF",
+        "prithivMLmods/Qwen2.5-Coder-3B-Instruct-GGUF",
+        "prithivMLmods/Llama-3.2-3B-GGUF",
+        "prithivMLmods/Qwen2.5-Coder-7B-Instruct-GGUF",
+        "nightmedia/LFM2-350M-Math-q5-hi-mlx",
+        "google/seahorse-large-q5",
+        "google/seahorse-xxl-q5",
+        "prithivMLmods/Qwen2.5-Coder-1.5B-Instruct-GGUF"
+      ]
+    },
+    {
+      "category": "nf4",
+      "count": 46,
+      "pct_all": 0.0262,
+      "pct_quantized": 0.1281,
+      "examples": [
+        "livehouse/flux1-dev-bnb-nf4-v2",
+        "ai-modelscope/flux1-dev-bnb-nf4",
+        "cjc1887415157/flux1-nf4",
+        "wikeeyang/Emu35-NF4",
+        "hf-diffusers/FLUX.1-Fill-dev-nf4",
+        "Astro202/llama-joycaption-beta-one-hf-llava-nf4",
+        "AiLieLemon/flux-kontext-nf4",
+        "livehouse/llama-joycaption-alpha-two-hf-llava-nf4",
+        "wikeeyang/Emu35-Image-NF4",
+        "baiyeqi/qwen3-8b-deepseek-v3-2-speciale-distill-ov-npu"
+      ]
+    },
+    {
+      "category": "aqlm",
+      "count": 24,
+      "pct_all": 0.0137,
+      "pct_quantized": 0.0669,
+      "examples": [
+        "TechxGenus-MS/deepseek-coder-7b-instruct-v1.5-AQLM",
+        "TechxGenus-MS/deepseek-coder-7b-base-v1.5-AQLM",
+        "AI-ModelScope/Llama-2-7b-AQLM-2Bit-1x16-hf",
+        "Vikhrmodels/Vikhr-7B-instruct_0.2-AQLM",
+        "IntervitensInc/Kunoichi-DPO-v2-7B-AQLM-2x16",
+        "TechxGenus-MS/deepseek-coder-1.3b-instruct-AQLM",
+        "TechxGenus-MS/deepseek-coder-6.7b-base-AQLM",
+        "TechxGenus-MS/deepseek-coder-6.7b-instruct-AQLM",
+        "TechxGenus-MS/deepseek-coder-33b-base-AQLM",
+        "TechxGenus-MS/deepseek-coder-33b-instruct-AQLM"
+      ]
+    },
+    {
+      "category": "eetq",
+      "count": 3,
+      "pct_all": 0.0017,
+      "pct_quantized": 0.0084,
+      "examples": [
+        "kernels-community/quantization-eetq",
+        "dphn/dolphin-2.9.2-qwen2-72b-eetq",
+        "cognitivecomputations/dolphin-2.9.2-qwen2-72b-eetq"
+      ]
+    }
+  ],
+  "top_quantized_owners": [
+    [
+      "featherless-ai-quants",
+      3038
+    ],
+    [
+      "TheBloke",
+      2960
+    ],
+    [
+      "mlx-community",
+      2958
+    ],
+    [
+      "bartowski",
+      2179
+    ],
+    [
+      "DevQuasar",
+      1660
+    ],
+    [
+      "QuantFactory",
+      1334
+    ],
+    [
+      "mradermacher",
+      1037
+    ],
+    [
+      "MaziyarPanahi",
+      1005
+    ],
+    [
+      "unsloth",
+      812
+    ],
+    [
+      "PKU-Alignment",
+      747
+    ],
+    [
+      "lmstudio-community",
+      643
+    ],
+    [
+      "nightmedia",
+      475
+    ],
+    [
+      "nm-testing",
+      454
+    ],
+    [
+      "Mungert",
+      450
+    ],
+    [
+      "RedHatAI",
+      443
+    ],
+    [
+      "PrunaAI",
+      426
+    ],
+    [
+      "prithivMLmods",
+      365
+    ],
+    [
+      "cyankiwi",
+      257
+    ],
+    [
+      "Qwen",
+      243
+    ],
+    [
+      "SicariusSicariiStuff",
+      233
+    ],
+    [
+      "OpenVINO",
+      231
+    ],
+    [
+      "AI-ModelScope",
+      224
+    ],
+    [
+      "neuralmagic",
+      219
+    ],
+    [
+      "Intel",
+      218
+    ],
+    [
+      "okwinds",
+      200
+    ],
+    [
+      "second-state",
+      176
+    ],
+    [
+      "Manojb",
+      176
+    ],
+    [
+      "llamafile-central",
+      175
+    ],
+    [
+      "LLM-Research",
+      164
+    ],
+    [
+      "tclf90",
+      159
+    ]
+  ],
+  "examples": {
+    "gguf": [
+      "unsloth/Qwen3.5-9B-GGUF",
+      "unsloth/Qwen3.5-27B-GGUF",
+      "LocoreMind/LocoOperator-4B",
+      "unsloth/Qwen3.5-35B-A3B-GGUF",
+      "TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "wikeeyang/Real-Qwen-Image-V2",
+      "dengzha0/flux_collection",
+      "modelscope_mp_129362455/ms_test_model_20250120-6",
+      "unsloth/DeepSeek-R1-GGUF",
+      "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF"
+    ],
+    "primary:gguf": [
+      "unsloth/Qwen3.5-9B-GGUF",
+      "unsloth/Qwen3.5-27B-GGUF",
+      "LocoreMind/LocoOperator-4B",
+      "unsloth/Qwen3.5-35B-A3B-GGUF",
+      "TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+      "wikeeyang/Real-Qwen-Image-V2",
+      "dengzha0/flux_collection",
+      "modelscope_mp_129362455/ms_test_model_20250120-6",
+      "unsloth/DeepSeek-R1-GGUF",
+      "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF"
+    ],
+    "fp8": [
+      "MusePublic/Qwen-image-fp8",
+      "ONETranquil/F.1-dev-fp8",
+      "muse/Wan2.2-TI2V-5B-FP8",
+      "MusePublic/FLUX.1-dev-fp8-dit",
+      "MusePublic/36_VAE_SD_1_5",
+      "SGFTGYXZG8/chengshi-jianzhu",
+      "muse/Wan2.1-T2V-1.3B-FP8",
+      "ikonion/hyx.260207.realreveal5.fp8",
+      "zzjjbb1985/Qwen-Image-Editv2509-zjb1118-fp8",
+      "lazywolf/FLUX-FP8-YURI"
+    ],
+    "primary:fp8": [
+      "MusePublic/Qwen-image-fp8",
+      "ONETranquil/F.1-dev-fp8",
+      "muse/Wan2.2-TI2V-5B-FP8",
+      "MusePublic/FLUX.1-dev-fp8-dit",
+      "MusePublic/36_VAE_SD_1_5",
+      "SGFTGYXZG8/chengshi-jianzhu",
+      "muse/Wan2.1-T2V-1.3B-FP8",
+      "ikonion/hyx.260207.realreveal5.fp8",
+      "zzjjbb1985/Qwen-Image-Editv2509-zjb1118-fp8",
+      "lazywolf/FLUX-FP8-YURI"
+    ],
+    "int3": [
+      "DiffSynth-Studio/FLUX.1-Kontext-dev-lora-SuperOutpainting",
+      "kkdddd/Paper-cut",
+      "AImissyou/3D",
+      "VoidOc/flux_pop_mart_1",
+      "xxcdesign/3Dcartoon",
+      "iLaboo/wusaqi",
+      "wmh666/majicflus_nezha02",
+      "VoidOc/Golden_Everything",
+      "yinjiaqi/3D_character_model",
+      "codexsharp/nano-banana-hd"
+    ],
+    "primary:int3": [
+      "DiffSynth-Studio/FLUX.1-Kontext-dev-lora-SuperOutpainting",
+      "kkdddd/Paper-cut",
+      "AImissyou/3D",
+      "VoidOc/flux_pop_mart_1",
+      "xxcdesign/3Dcartoon",
+      "iLaboo/wusaqi",
+      "wmh666/majicflus_nezha02",
+      "VoidOc/Golden_Everything",
+      "yinjiaqi/3D_character_model",
+      "codexsharp/nano-banana-hd"
+    ],
+    "q2": [
+      "fg43ghhfd/mox-daoguo-Q2",
+      "bunny0628/Bunny-Embroidery-Q2",
+      "tangchuc0137/q2",
+      "IceWindai/byna-Q2",
+      "a996483259/Q2",
+      "loveshanhuo/q2",
+      "lzkszsd888/Q2",
+      "henhuohuo/q2",
+      "duyongjun/HEMEI-Q2",
+      "Q1666888/Q2"
+    ],
+    "quantized-unspecified": [
+      "axin9470/LOJ2.0",
+      "modelscope_mp_129362455/test1111quantized",
+      "CuteOwls666/BrightLeafBooks",
+      "Qwen/Qwen3-Embedding-8B",
+      "Qwen/Qwen1.5-7B-Chat",
+      "Nurburgring/BEYOND_REALITY_Z_IMAGE",
+      "Qwen/Qwen3-Embedding-0.6B",
+      "Qwen/Qwen1.5-14B-Chat",
+      "Qwen/Qwen1.5-0.5B-Chat",
+      "Qwen/Qwen1.5-1.8B-Chat"
+    ],
+    "primary:quantized-unspecified": [
+      "axin9470/LOJ2.0",
+      "modelscope_mp_129362455/test1111quantized",
+      "CuteOwls666/BrightLeafBooks",
+      "Qwen/Qwen3-Embedding-8B",
+      "Qwen/Qwen1.5-7B-Chat",
+      "Nurburgring/BEYOND_REALITY_Z_IMAGE",
+      "Qwen/Qwen3-Embedding-0.6B",
+      "Qwen/Qwen1.5-14B-Chat",
+      "Qwen/Qwen1.5-0.5B-Chat",
+      "Qwen/Qwen1.5-1.8B-Chat"
+    ],
+    "int8": [
+      "ruoying425/8bit",
+      "SUSUSUCK/8bitgirl",
+      "ModelE/8bit-qwen-image-edit-2",
+      "yvyouxin/8bits-11",
+      "ruoying425/8bit-v1",
+      "yvyouxin/8bits-beta",
+      "yvyouxin/8bits-1",
+      "yvyouxin/8bits-2",
+      "yvyouxin/8bits-5",
+      "yvyouxin/8bits-3"
+    ],
+    "8bit-generic": [
+      "ruoying425/8bit",
+      "ModelE/8bit-qwen-image-edit-2",
+      "ruoying425/8bit-v1",
+      "LLM-Research/glm-4-9b-chat-GGUF",
+      "mlx-community/DeepSeek-R1-Distill-Llama-70B-8bit",
+      "Disty0/Z-Image-Turbo-SDNQ-int8",
+      "mlx-community/DeepSeek-v3-0324-8bit",
+      "AI-ModelScope/WizardLM-2-7B-GGUF",
+      "Qwen/Qwen3-8B-MLX-8bit",
+      "Qwen/Qwen3-235B-A22B-MLX-8bit"
+    ],
+    "primary:int8": [
+      "ruoying425/8bit",
+      "SUSUSUCK/8bitgirl",
+      "ModelE/8bit-qwen-image-edit-2",
+      "yvyouxin/8bits-11",
+      "ruoying425/8bit-v1",
+      "yvyouxin/8bits-beta",
+      "yvyouxin/8bits-1",
+      "yvyouxin/8bits-2",
+      "yvyouxin/8bits-5",
+      "yvyouxin/8bits-3"
+    ],
+    "primary:q2": [
+      "bunny0628/Bunny-Embroidery-Q2",
+      "tangchuc0137/q2",
+      "IceWindai/byna-Q2",
+      "a996483259/Q2",
+      "loveshanhuo/q2",
+      "henhuohuo/q2",
+      "duyongjun/HEMEI-Q2",
+      "Q1666888/Q2",
+      "Smartisan233/Q2",
+      "mlx-community/YandexGPT-5-Lite-8B-instruct-q2"
+    ],
+    "q3": [
+      "xiiian/Q.3",
+      "z647799842/Q3",
+      "bunny0628/Bunny-Embroidery-Q3",
+      "duyongjun/HEMEI-Q3",
+      "Q1666888/Q3",
+      "zerofata/Q3.5-BlueStar-27B-gguf",
+      "allura-forge/allura-forge-q3-30b-ft-ep2-merged",
+      "allura-forge/allura-forge-q3-8b-rc1",
+      "allura-forge/q3-sft-take2-kto-step144-adpt",
+      "allura-forge/q3-8b-ft-adpt-ep1"
+    ],
+    "primary:q3": [
+      "xiiian/Q.3",
+      "z647799842/Q3",
+      "bunny0628/Bunny-Embroidery-Q3",
+      "duyongjun/HEMEI-Q3",
+      "Q1666888/Q3",
+      "allura-forge/allura-forge-q3-30b-ft-ep2-merged",
+      "allura-forge/allura-forge-q3-8b-rc1",
+      "allura-forge/q3-sft-take2-kto-step144-adpt",
+      "allura-forge/q3-8b-ft-adpt-ep1",
+      "allura-forge/q3-8b-ft-adpt-ep2"
+    ],
+    "int2": [
+      "QWQ114514123/shenchaoweiba-w2",
+      "zzzzzz77777/Qversion2.0",
+      "lxqyyds/W2",
+      "LLM-Research/glm-4-9b-chat-GGUF",
+      "AI-ModelScope/Yi_34B_Chat_2bit",
+      "AI-ModelScope/WizardLM-2-7B-GGUF",
+      "LLM-Research/Mistral-7B-Instruct-v0.3-GGUF",
+      "LLM-Research/glm-4-9b-chat-1m-GGUF",
+      "AI-ModelScope/WizardLM-2-8x22B-GGUF",
+      "AngelSlim/HY-1.8B-2Bit-GGUF"
+    ],
+    "primary:int2": [
+      "QWQ114514123/shenchaoweiba-w2",
+      "zzzzzz77777/Qversion2.0",
+      "lxqyyds/W2",
+      "AI-ModelScope/Yi_34B_Chat_2bit",
+      "PaddlePaddle/ERNIE-4.5-300B-A47B-2Bits-Paddle",
+      "OPEA/DeepSeek-R1-int2-mixed-sym-inc",
+      "mlx-community/DeepSeek-R1-2bit",
+      "OPEA/Qwen2.5-72B-Instruct-int2-sym-inc",
+      "mlx-community/dolphin-2.9.1-qwen-110b-2bit",
+      "nightmedia/Almost-Human-X3-32bit-1839-6B-qx86-hi-mlx"
+    ],
+    "q5": [
+      "tangchuc0137/q5",
+      "nightmedia/unsloth-gpt-oss-120b-q5-hi-mlx",
+      "prithivMLmods/Qwen2.5-Coder-7B-GGUF",
+      "prithivMLmods/Qwen2.5-Coder-3B-Instruct-GGUF",
+      "prithivMLmods/Llama-3.2-3B-GGUF",
+      "prithivMLmods/Qwen2.5-Coder-7B-Instruct-GGUF",
+      "nightmedia/LFM2-350M-Math-q5-hi-mlx",
+      "google/seahorse-large-q5",
+      "google/seahorse-xxl-q5",
+      "prithivMLmods/Qwen2.5-Coder-1.5B-Instruct-GGUF"
+    ],
+    "primary:q5": [
+      "tangchuc0137/q5",
+      "nightmedia/unsloth-gpt-oss-120b-q5-hi-mlx",
+      "nightmedia/LFM2-350M-Math-q5-hi-mlx",
+      "google/seahorse-large-q5",
+      "google/seahorse-xxl-q5",
+      "nightmedia/Qwen3-Coder-30B-A3B-Instruct-1m-q5-hi-mlx",
+      "nightmedia/unsloth-GLM-4.5-Air-q5-mlx",
+      "nightmedia/Qwen3-Coder-53B-A3B-Instruct-TOTAL-RECALL-v2-MASTER-CODER-L-q5-hi-mlx",
+      "nightmedia/Qwen3-Jan-Nano-128k-6B-Brainstorm20x-q5-mlx",
+      "nightmedia/Qwen3-8B-YOYO-V2-Hybrid-q5-hi-mlx"
+    ],
+    "q6": [
+      "nanyu693/Q6",
+      "Manojb/qwen2.5-coder-14b-instruct-q6_k.gguf",
+      "nightmedia/Tongyi-DeepResearch-30B-A3B-q6-hi-mlx",
+      "Manojb/qwen2.5-coder-7b-instruct-q6_k.gguf",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-q6-mlx",
+      "nightmedia/Qwen3-Shining-Valiant-Instruct-CODER-Reasoning-2.7B-q6-mlx",
+      "newsletter/Gemma-2-9B-It-SPPO-Iter3-Q6_K-GGUF",
+      "nightmedia/Gemma3-27B-it-vl-HERETIC-GLM4.7-2200x-cp515-q6-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-128k-ctx-q6-mlx",
+      "nightmedia/Gemma-3-27b-it-HERETIC-Gemini-Deep-Reasoning-q6-mlx"
+    ],
+    "primary:q6": [
+      "nanyu693/Q6",
+      "nightmedia/Tongyi-DeepResearch-30B-A3B-q6-hi-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-q6-mlx",
+      "nightmedia/Qwen3-Shining-Valiant-Instruct-CODER-Reasoning-2.7B-q6-mlx",
+      "nightmedia/Gemma3-27B-it-vl-HERETIC-GLM4.7-2200x-cp515-q6-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-128k-ctx-q6-mlx",
+      "nightmedia/Gemma-3-27b-it-HERETIC-Gemini-Deep-Reasoning-q6-mlx",
+      "nightmedia/Gemma-3-27b-it-HERETIC-Gemini-1000x-Deep-Reasoning-q6-mlx",
+      "google/seahorse-large-q6",
+      "google/seahorse-xxl-q6"
+    ],
+    "int4": [
+      "ZhipuAI/chatglm2-6b",
+      "Qwen/Qwen-72B-Chat-Int4",
+      "ZhipuAI/chatglm2-6b-int4",
+      "Qwen/Qwen-VL-Chat-Int4",
+      "Qwen/Qwen-1_8B-Chat-Int4",
+      "codefuse-ai/CodeFuse-CodeLlama-34B-4bits",
+      "Qwen/Qwen1.5-14B-Chat-GPTQ-Int4",
+      "Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4",
+      "TongyiFinance/Tongyi-Finance-14B-Chat-Int4",
+      "Qwen/Qwen1.5-7B-Chat-GPTQ-Int4"
+    ],
+    "primary:int4": [
+      "ZhipuAI/chatglm2-6b",
+      "Qwen/Qwen-72B-Chat-Int4",
+      "ZhipuAI/chatglm2-6b-int4",
+      "Qwen/Qwen-VL-Chat-Int4",
+      "Qwen/Qwen-1_8B-Chat-Int4",
+      "codefuse-ai/CodeFuse-CodeLlama-34B-4bits",
+      "TongyiFinance/Tongyi-Finance-14B-Chat-Int4",
+      "Genius-Society/chatglm_6b",
+      "OpenBMB/MiniCPM-Llama3-V-2_5-int4",
+      "okwinds/DeepSeek-R1-Distill-Qwen-32B-Int4-W4A16"
+    ],
+    "awq": [
+      "Qwen/Qwen2.5-VL-72B-Instruct-AWQ",
+      "Qwen/Qwen2.5-VL-7B-Instruct-AWQ",
+      "Qwen/Qwen3-32B-AWQ",
+      "Qwen/QwQ-32B-AWQ",
+      "Qwen/Qwen2.5-VL-3B-Instruct-AWQ",
+      "Qwen/Qwen2.5-VL-32B-Instruct-AWQ",
+      "Qwen/Qwen2.5-32B-Instruct-AWQ",
+      "Qwen/Qwen2.5-72B-Instruct-AWQ",
+      "cognitivecomputations/DeepSeek-R1-awq",
+      "Qwen/Qwen3-8B-AWQ"
+    ],
+    "primary:awq": [
+      "Qwen/Qwen2.5-VL-72B-Instruct-AWQ",
+      "Qwen/Qwen2.5-VL-7B-Instruct-AWQ",
+      "Qwen/Qwen3-32B-AWQ",
+      "Qwen/QwQ-32B-AWQ",
+      "Qwen/Qwen2.5-VL-3B-Instruct-AWQ",
+      "Qwen/Qwen2.5-VL-32B-Instruct-AWQ",
+      "Qwen/Qwen2.5-32B-Instruct-AWQ",
+      "Qwen/Qwen2.5-72B-Instruct-AWQ",
+      "cognitivecomputations/DeepSeek-R1-awq",
+      "Qwen/Qwen3-8B-AWQ"
+    ],
+    "gptq": [
+      "Qwen/Qwen1.5-14B-Chat-GPTQ-Int4",
+      "Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen1.5-7B-Chat-GPTQ-Int4",
+      "Qwen/Qwen1.5-72B-Chat-GPTQ-Int4",
+      "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen2-72B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen3-0.6B-GPTQ-Int8",
+      "Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4"
+    ],
+    "primary:gptq": [
+      "Qwen/Qwen1.5-14B-Chat-GPTQ-Int4",
+      "Qwen/Qwen2.5-72B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen1.5-7B-Chat-GPTQ-Int4",
+      "Qwen/Qwen1.5-72B-Chat-GPTQ-Int4",
+      "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen2-72B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen3-0.6B-GPTQ-Int8",
+      "Qwen/Qwen2-VL-7B-Instruct-GPTQ-Int4",
+      "Qwen/Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4"
+    ],
+    "q4": [
+      "CarbonAgent/llama-2-13b-chat.Q4",
+      "cjc1887415157/Tifa-Deepsex-14b-CoT-GGUF-Q4",
+      "zimageapp/z-image-turbo-q4",
+      "ggml-org/DeepSeek-R1-Distill-Qwen-1.5B-Q4_0-GGUF",
+      "OPEA/DeepSeek-R1-int4-sym-gguf-q4-0-inc",
+      "AI-ModelScope/gemma-3-12b-it-qat-q4_0-gguf",
+      "OpenBMB/MiniCPM-2B-dpo-q4_0-gguf",
+      "AI-ModelScope/gemma-3-1b-it-qat-q4_0-gguf",
+      "aliworkq/Qwen3-0.6B-Q4_0.GGUF",
+      "neuphonic/neutts-air-q4-gguf"
+    ],
+    "4bit-generic": [
+      "LLM-Research/glm-4-9b-chat-GGUF",
+      "FunAGI/Qwen2.5-Omni-7B-GPTQ-4bit",
+      "DavidWen2025/Qwen3-VL-8B-Instruct-4bit-GPTQ",
+      "cpatonn-mirror/Qwen3-Next-80B-A3B-Instruct-AWQ-4bit",
+      "unsloth/DeepSeek-R1-Distill-Qwen-32B-bnb-4bit",
+      "HinGwenWoong/streamer-sales-lelemiao-7b-4bit",
+      "unsloth/QwQ-32B-unsloth-bnb-4bit",
+      "cyankiwi/Qwen3.5-27B-AWQ-4bit",
+      "unsloth/Qwen3-8B-unsloth-bnb-4bit",
+      "unsloth/Qwen3-14B-unsloth-bnb-4bit"
+    ],
+    "5bit-generic": [
+      "LLM-Research/glm-4-9b-chat-GGUF",
+      "AI-ModelScope/WizardLM-2-7B-GGUF",
+      "LLM-Research/Mistral-7B-Instruct-v0.3-GGUF",
+      "LLM-Research/glm-4-9b-chat-1m-GGUF",
+      "AI-ModelScope/WizardLM-2-8x22B-GGUF",
+      "hf/BennyDaBall-qwen3-4b-Z-Image-Engineer-V2-5bit-MLX",
+      "inferencerlabs/GLM-4.7-MLX-6.5bit",
+      "MaziyarPanahi/Qwen3-4B-Instruct-2507-GGUF",
+      "MaziyarPanahi/Falcon3-1B-Base-GGUF",
+      "MaziyarPanahi/llama3-8B-DarkIdol-1.2-GGUF"
+    ],
+    "6bit-generic": [
+      "LLM-Research/glm-4-9b-chat-GGUF",
+      "okwinds/DeepSeek-R1-Distill-Qwen-32B-MLX-6bit",
+      "AI-ModelScope/WizardLM-2-7B-GGUF",
+      "Qwen/Qwen3-8B-MLX-6bit",
+      "LLM-Research/Mistral-7B-Instruct-v0.3-GGUF",
+      "LLM-Research/glm-4-9b-chat-1m-GGUF",
+      "Qwen/Qwen3-4B-MLX-6bit",
+      "Qwen/Qwen3-235B-A22B-MLX-6bit",
+      "inferencerlabs/GLM-5-MLX-5.6bit",
+      "AI-ModelScope/WizardLM-2-8x22B-GGUF"
+    ],
+    "int1": [
+      "HiDream-ai/HiDream-I1-Full",
+      "AI-ModelScope/bitnet-b1.58-2B-4T",
+      "mradermacher/Huihui-Qwen3-8B-abliterated-v2-i1-GGUF",
+      "AI-ModelScope/bitnet-b1.58-2B-4T-gguf",
+      "mradermacher/DeepSeek-R1-Distill-Qwen-14B-abliterated-v2-remap-i1-GGUF",
+      "mradermacher/Huihui-Qwen3-14B-abliterated-v2-i1-GGUF",
+      "AI-ModelScope/bitnet-b1.58-2B-4T-bf16",
+      "mradermacher/Josiefied-Qwen3-14B-abliterated-v3-i1-GGUF",
+      "mradermacher/Meta-Llama-3.1-8B-Instruct-abliterated-ICONN-1-BasicChat-i1-GGUF",
+      "microsoft/bitnet-b1.58-2B-4T"
+    ],
+    "primary:int1": [
+      "HiDream-ai/HiDream-I1-Full",
+      "AI-ModelScope/bitnet-b1.58-2B-4T",
+      "AI-ModelScope/bitnet-b1.58-2B-4T-bf16",
+      "microsoft/bitnet-b1.58-2B-4T",
+      "HiDream-ai/HiDream-I1-Fast",
+      "HiDream-ai/HiDream-I1-Dev",
+      "cjc1887415157/bitnet_b1_58-3B",
+      "AI-ModelScope/HiDream-I1-Dev",
+      "inferencerlabs/Qwen3.5-397B-A17B-MLX-4.1bit",
+      "microsoft/bitnet-b1.58-2B-4T-bf16"
+    ],
+    "q8": [
+      "yingda/gte-Qwen2-1.5B-instruct-GGUF",
+      "ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF",
+      "swift/llama3-8b-agent-instruct-v2-GGUF",
+      "yingda/bce-embedding-base_v1-GGUF",
+      "stepfun-ai/Step-3.5-Flash-GGUF-Q8_0",
+      "newsletter/Qwen3-0.6B-Base-Q8_0-GGUF",
+      "prithivMLmods/Qwen3-1.7B-ft-bf16-Q8_0-GGUF",
+      "ggml-org/Qwen3-4B-Thinking-2507-Q8_0-GGUF",
+      "YOYO-AI/Qwen3-VL-4B-YOYO-Instruct-Q8_0-GGUF",
+      "openfree/Qwen2.5-VL-32B-Instruct-Q8_0-GGUF"
+    ],
+    "nf4": [
+      "livehouse/flux1-dev-bnb-nf4-v2",
+      "ai-modelscope/flux1-dev-bnb-nf4",
+      "cjc1887415157/flux1-nf4",
+      "wikeeyang/Emu35-NF4",
+      "hf-diffusers/FLUX.1-Fill-dev-nf4",
+      "Astro202/llama-joycaption-beta-one-hf-llava-nf4",
+      "AiLieLemon/flux-kontext-nf4",
+      "livehouse/llama-joycaption-alpha-two-hf-llava-nf4",
+      "wikeeyang/Emu35-Image-NF4",
+      "baiyeqi/qwen3-8b-deepseek-v3-2-speciale-distill-ov-npu"
+    ],
+    "primary:nf4": [
+      "livehouse/flux1-dev-bnb-nf4-v2",
+      "ai-modelscope/flux1-dev-bnb-nf4",
+      "cjc1887415157/flux1-nf4",
+      "wikeeyang/Emu35-NF4",
+      "hf-diffusers/FLUX.1-Fill-dev-nf4",
+      "Astro202/llama-joycaption-beta-one-hf-llava-nf4",
+      "AiLieLemon/flux-kontext-nf4",
+      "livehouse/llama-joycaption-alpha-two-hf-llava-nf4",
+      "wikeeyang/Emu35-Image-NF4",
+      "baiyeqi/qwen3-8b-deepseek-v3-2-speciale-distill-ov-npu"
+    ],
+    "primary:q4": [
+      "zimageapp/z-image-turbo-q4",
+      "google/gemma-3-270m-it-qat-q4_0-unquantized",
+      "google/embeddinggemma-300m-qat-q4_0-unquantized",
+      "google/gemma-3-270m-qat-q4_0-unquantized",
+      "google/gemma-3-12b-it-qat-q4_0-unquantized",
+      "Lightricks/gemma-3-12b-it-qat-q4_0-unquantized",
+      "mlx-community/Flux-1.lite-8B-MLX-Q4",
+      "nightmedia/unsloth-gpt-oss-120b-q4-hi-mlx",
+      "nightmedia/Qwen3-Shining-Valiant-Instruct-CODER-Reasoning-2.7B-q4-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-q4-mlx"
+    ],
+    "fp4": [
+      "nv-community/DeepSeek-R1-FP4",
+      "nv-community/Qwen3-30B-A3B-FP4",
+      "nv-community/Qwen3-235B-A22B-FP4",
+      "nv-community/Qwen3-32B-FP4",
+      "qingcheng-ai/Qwen3-32B-fp4",
+      "nv-community/DeepSeek-V3-0324-FP4",
+      "nv-community/DeepSeek-R1-0528-FP4-v2",
+      "hf/BennyDaBall-MiniMax-M2.5-REAP-139B-A10B-MXFP4",
+      "hf/GadflyII-GLM-4.7-Flash-MXFP4",
+      "nv-community/Qwen3-30B-A3B-NVFP4"
+    ],
+    "primary:fp4": [
+      "nv-community/DeepSeek-R1-FP4",
+      "nv-community/Qwen3-30B-A3B-FP4",
+      "nv-community/Qwen3-235B-A22B-FP4",
+      "nv-community/Qwen3-32B-FP4",
+      "qingcheng-ai/Qwen3-32B-fp4",
+      "nv-community/DeepSeek-V3-0324-FP4",
+      "nv-community/DeepSeek-R1-0528-FP4-v2",
+      "hf/GadflyII-GLM-4.7-Flash-MXFP4",
+      "nv-community/Qwen3-30B-A3B-NVFP4",
+      "nv-community/NVIDIA-Nemotron-Nano-12B-v2-VL-NVFP4-QAD"
+    ],
+    "primary:6bit-generic": [
+      "okwinds/DeepSeek-R1-Distill-Qwen-32B-MLX-6bit",
+      "Qwen/Qwen3-8B-MLX-6bit",
+      "Qwen/Qwen3-4B-MLX-6bit",
+      "Qwen/Qwen3-235B-A22B-MLX-6bit",
+      "inferencerlabs/GLM-5-MLX-5.6bit",
+      "mlx-community/DeepSeek-R1-Distill-Qwen-32B-6bit",
+      "Qwen/Qwen3-1.7B-MLX-6bit",
+      "Qwen/Qwen3-32B-MLX-6bit",
+      "Qwen/Qwen3-30B-A3B-MLX-6bit",
+      "lmstudio-community/GLM-4.7-Flash-MLX-6bit"
+    ],
+    "primary:5bit-generic": [
+      "hf/BennyDaBall-qwen3-4b-Z-Image-Engineer-V2-5bit-MLX",
+      "inferencerlabs/GLM-4.7-MLX-6.5bit",
+      "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-5bit",
+      "LiquidAI/LFM2-24B-A2B-MLX-5bit",
+      "mlx-community/Qwen3-Coder-30B-A3B-Instruct-5bit",
+      "mlx-community/Qwen3-30B-A3B-Instruct-2507-5bit-DWQ-lr1e-7",
+      "mlx-community/Qwen3-ASR-1.7B-5bit",
+      "inferencerlabs/Step-3.5-Flash-MLX-6.5bit",
+      "mlx-community/Qwen3-235B-A22B-Instruct-2507-5bit",
+      "inferencerlabs/Qwen3-Coder-Next-MLX-5.5bit"
+    ],
+    "primary:q8": [
+      "mlx-community/FuseO1-DeepSeekR1-Qwen2.5-Coder-32B-Preview-Q8",
+      "xiaowangge/conan-embedding-v1-q8",
+      "nightmedia/Gemma3-27B-it-vl-HERETIC-GLM4.7-2200x-cp515-q8-mlx",
+      "mlx-community/Kimi-K2.5-mlx-DQ3_K_M-q8",
+      "nightmedia/Qwen2.5-3X7B-CoderInstruct-OlympicCoder-MS-Next-Coder-24B-v1-128k-q8-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-12B-Brainstorm20x-q8-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-6B-Brainstorm20x-q8-mlx",
+      "nightmedia/Qwen3-Code-Reasoning-Instruct-6B-Brainstorm20x-q8-mlx",
+      "nightmedia/LFM2.5-1.2B-Thinking-Polaris-Claude-Deepseek-GLM-q8-mlx",
+      "nightmedia/Qwen3-Esper3-Reasoning-CODER-Instruct-21B-Brainstorm20x-q8-mlx"
+    ],
+    "hqq": [
+      "mobiuslabsgmbh/Llama-2-7b-chat-hf-4bit_g64-HQQ",
+      "PrunaAI/maicomputer-alpaca-native-HQQ-4bit-smashed",
+      "PrunaAI/ai21labs-AI21-Jamba-Reasoning-3B-HQQ-8bit-smashed",
+      "PrunaAI/ByteDance-Seed-Stable-DiffCoder-8B-Instruct-HQQ-4bit-smashed",
+      "PrunaAI/sarvamai-sarvam-1-HQQ-4bit-smashed",
+      "PrunaAI/Tiiny-SmallThinker-3B-Preview-HQQ-8bit-smashed",
+      "PrunaAI/sarvamai-sarvam-1-HQQ-8bit-smashed",
+      "PrunaAI/WeiboAI-VibeThinker-1.5B-HQQ-8bit-smashed",
+      "PrunaAI/maya-research-maya1-HQQ-8bit-smashed",
+      "PrunaAI/Nanbeige-Nanbeige4.1-3B-HQQ-4bit-smashed"
+    ],
+    "primary:hqq": [
+      "mobiuslabsgmbh/Llama-2-7b-chat-hf-4bit_g64-HQQ",
+      "PrunaAI/maicomputer-alpaca-native-HQQ-4bit-smashed",
+      "PrunaAI/ai21labs-AI21-Jamba-Reasoning-3B-HQQ-8bit-smashed",
+      "PrunaAI/ByteDance-Seed-Stable-DiffCoder-8B-Instruct-HQQ-4bit-smashed",
+      "PrunaAI/sarvamai-sarvam-1-HQQ-4bit-smashed",
+      "PrunaAI/Tiiny-SmallThinker-3B-Preview-HQQ-8bit-smashed",
+      "PrunaAI/sarvamai-sarvam-1-HQQ-8bit-smashed",
+      "PrunaAI/WeiboAI-VibeThinker-1.5B-HQQ-8bit-smashed",
+      "PrunaAI/maya-research-maya1-HQQ-8bit-smashed",
+      "PrunaAI/Nanbeige-Nanbeige4.1-3B-HQQ-4bit-smashed"
+    ],
+    "exl2": [
+      "bartowski/Code-Llama-3-8B-exl2",
+      "bartowski/Pantheon-RP-1.5-12b-Nemo-exl2",
+      "Eigeen/Xwin-LM-13B-V0.2-8bpw-exl2",
+      "bartowski/deepseek-coder-7b-base-v1.5-exl2",
+      "bartowski/deepseek-coder-7b-instruct-v1.5-exl2",
+      "bartowski/DeepSeek-R1-Distill-Qwen-14B-exl2",
+      "IntervitensInc/Qwen2-72b-4.25bpw-exl2",
+      "zerofata/L3.3-MS-unnamed-V0.5-4.5bpw-h6-exl2",
+      "zerofata/L3.3-GeneticLemonade-Unleashed-v3-70B_4bpw-hb6-exl2",
+      "zerofata/L3.3-GeneticLemonade-Unleashed-v2.1-70B-6bpw-hb8-exl2"
+    ],
+    "primary:exl2": [
+      "bartowski/Code-Llama-3-8B-exl2",
+      "bartowski/Pantheon-RP-1.5-12b-Nemo-exl2",
+      "Eigeen/Xwin-LM-13B-V0.2-8bpw-exl2",
+      "bartowski/deepseek-coder-7b-base-v1.5-exl2",
+      "bartowski/deepseek-coder-7b-instruct-v1.5-exl2",
+      "bartowski/DeepSeek-R1-Distill-Qwen-14B-exl2",
+      "IntervitensInc/Qwen2-72b-4.25bpw-exl2",
+      "zerofata/L3.3-MS-unnamed-V0.5-4.5bpw-h6-exl2",
+      "zerofata/L3.3-GeneticLemonade-Unleashed-v3-70B_4bpw-hb6-exl2",
+      "zerofata/L3.3-GeneticLemonade-Unleashed-v2.1-70B-6bpw-hb8-exl2"
+    ],
+    "aqlm": [
+      "TechxGenus-MS/deepseek-coder-7b-instruct-v1.5-AQLM",
+      "TechxGenus-MS/deepseek-coder-7b-base-v1.5-AQLM",
+      "AI-ModelScope/Llama-2-7b-AQLM-2Bit-1x16-hf",
+      "Vikhrmodels/Vikhr-7B-instruct_0.2-AQLM",
+      "IntervitensInc/Kunoichi-DPO-v2-7B-AQLM-2x16",
+      "TechxGenus-MS/deepseek-coder-1.3b-instruct-AQLM",
+      "TechxGenus-MS/deepseek-coder-6.7b-base-AQLM",
+      "TechxGenus-MS/deepseek-coder-6.7b-instruct-AQLM",
+      "TechxGenus-MS/deepseek-coder-33b-base-AQLM",
+      "TechxGenus-MS/deepseek-coder-33b-instruct-AQLM"
+    ],
+    "primary:aqlm": [
+      "TechxGenus-MS/deepseek-coder-7b-instruct-v1.5-AQLM",
+      "TechxGenus-MS/deepseek-coder-7b-base-v1.5-AQLM",
+      "AI-ModelScope/Llama-2-7b-AQLM-2Bit-1x16-hf",
+      "Vikhrmodels/Vikhr-7B-instruct_0.2-AQLM",
+      "IntervitensInc/Kunoichi-DPO-v2-7B-AQLM-2x16",
+      "TechxGenus-MS/deepseek-coder-1.3b-instruct-AQLM",
+      "TechxGenus-MS/deepseek-coder-6.7b-base-AQLM",
+      "TechxGenus-MS/deepseek-coder-6.7b-instruct-AQLM",
+      "TechxGenus-MS/deepseek-coder-33b-base-AQLM",
+      "TechxGenus-MS/deepseek-coder-33b-instruct-AQLM"
+    ],
+    "eetq": [
+      "kernels-community/quantization-eetq",
+      "dphn/dolphin-2.9.2-qwen2-72b-eetq",
+      "cognitivecomputations/dolphin-2.9.2-qwen2-72b-eetq"
+    ],
+    "primary:eetq": [
+      "kernels-community/quantization-eetq",
+      "dphn/dolphin-2.9.2-qwen2-72b-eetq",
+      "cognitivecomputations/dolphin-2.9.2-qwen2-72b-eetq"
+    ]
+  },
+  "sample_quantized_models": [
+    "unsloth/Qwen3.5-9B-GGUF",
+    "unsloth/Qwen3.5-27B-GGUF",
+    "LocoreMind/LocoOperator-4B",
+    "unsloth/Qwen3.5-35B-A3B-GGUF",
+    "TeichAI/Qwen3-14B-Claude-4.5-Opus-High-Reasoning-Distill-GGUF",
+    "wikeeyang/Real-Qwen-Image-V2",
+    "MusePublic/Qwen-image-fp8",
+    "DiffSynth-Studio/FLUX.1-Kontext-dev-lora-SuperOutpainting",
+    "kkdddd/Paper-cut",
+    "ONETranquil/F.1-dev-fp8",
+    "AImissyou/3D",
+    "muse/Wan2.2-TI2V-5B-FP8",
+    "VoidOc/flux_pop_mart_1",
+    "xxcdesign/3Dcartoon",
+    "iLaboo/wusaqi",
+    "wmh666/majicflus_nezha02",
+    "VoidOc/Golden_Everything",
+    "yinjiaqi/3D_character_model",
+    "codexsharp/nano-banana-hd",
+    "s1024625602/Feltstyle"
+  ],
+  "notes": [
+    "统计口径基于列表接口可见字段：Name/ChineseName/Tags/OfficialTags/Libraries/Frameworks/ModelType/Description。",
+    "multi_label_counts 为多标签统计，一个模型可能同时命中多个类别（例如 GGUF + q4）。",
+    "primary_counts 为互斥主类别统计，每个模型只归到一个优先级最高的类别。",
+    "这不是官方 benchmark 统计，而是 ModelScope 全站模型命名/标签层面的量化类型分布统计。"
+  ]
+}

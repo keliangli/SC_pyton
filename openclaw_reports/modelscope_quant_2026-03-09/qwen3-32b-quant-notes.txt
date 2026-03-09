@@ -1,0 +1,76 @@
+# ModelScope 量化模型得分检查（2026-03-09）
+
+任务：检查 ModelScope 上 Qwen3-32B 各量化类型模型，确认页面/接口是否提供 benchmark/得分信息，重点查看 AWQ Int4。
+
+## 检查方法
+- 使用 ModelScope Python SDK (`modelscope.hub.api.HubApi`) 访问官方接口
+- 查询官方 owner `Qwen` 下的 `Qwen3-32B` 相关模型
+- 读取模型详情字段：Downloads / Stars / Metrics / ReadMeContent
+
+## 查到的官方 Qwen3-32B 相关模型
+1. Qwen/Qwen3-32B
+2. Qwen/Qwen3-32B-AWQ
+3. Qwen/Qwen3-32B-FP8
+4. Qwen/Qwen3-32B-GGUF
+5. Qwen/Qwen3-32B-MLX-bf16
+6. Qwen/Qwen3-32B-MLX-4bit
+7. Qwen/Qwen3-32B-MLX-6bit
+8. Qwen/Qwen3-32B-MLX-8bit
+
+## 关键结论
+- ModelScope 接口字段 `Metrics` 在上述模型里均为空，没有统一结构化 benchmark 字段。
+- 页面上能直接看到的“得分/benchmark”并不统一提供。
+- 在官方条目里，`Qwen/Qwen3-32B-AWQ` 的 README 明确给出了 AWQ-int4 对比 bf16 的性能表。
+- `Qwen/Qwen3-32B-GGUF`、`Qwen/Qwen3-32B-MLX-4bit/6bit/8bit`、`Qwen/Qwen3-32B-FP8` 页面目前主要给的是量化类型、使用方法和下载/点赞，不像 AWQ 页面那样直接给量化后 benchmark 表。
+
+## AWQ Int4（Qwen/Qwen3-32B-AWQ）页面可见得分
+来源：模型 README 的 Performance 表。
+
+### Thinking 模式
+- bf16: LiveBench 74.9 / GPQA 68.4 / MMLU-Redux 90.9 / AIME24 81.4
+- AWQ-int4: LiveBench 73.1 / GPQA 69.0 / MMLU-Redux 90.8 / AIME24 79.4
+
+### Non-Thinking 模式
+- bf16: LiveBench 59.8 / GPQA 54.6 / MMLU-Redux 85.7
+- AWQ-int4: LiveBench 59.8 / GPQA 53.1 / MMLU-Redux 85.6
+
+### 观察
+- AWQ-int4 相比 bf16，整体精度损失不大。
+- Thinking 模式下：LiveBench -1.8，GPQA +0.6，MMLU-Redux -0.1，AIME24 -2.0。
+- Non-Thinking 模式下：LiveBench 持平，GPQA -1.5，MMLU-Redux -0.1。
+- 说明 Qwen 官方给出的结论更偏向“AWQ 4bit 能较好保留能力，同时显著降低显存占用”。
+
+## 其他量化/压缩类型（官方页面可见信息）
+### Qwen/Qwen3-32B-GGUF
+- 页面说明的量化文件类型：q4_K_M, q5_0, q5_K_M, q6_K, q8_0
+- 但页面未像 AWQ 一样直接给各量化档位的 benchmark 分数表。
+
+### Qwen/Qwen3-32B-MLX-4bit
+- 页面明确是 MLX 4bit 版本
+- 页面未直接给 benchmark 分数表
+
+### Qwen/Qwen3-32B-FP8
+- 页面说明是 FP8 版本
+- 页面未直接给量化后的 benchmark 分数表
+
+## 下载/点赞（便于判断关注度）
+- Qwen/Qwen3-32B: Downloads 3365033, Stars 298
+- Qwen/Qwen3-32B-AWQ: Downloads 411219, Stars 36
+- Qwen/Qwen3-32B-FP8: Downloads 168511, Stars 20
+- Qwen/Qwen3-32B-GGUF: Downloads 35937, Stars 17
+- Qwen/Qwen3-32B-MLX-4bit: Downloads 676, Stars 4
+- Qwen/Qwen3-32B-MLX-6bit: Downloads 404, Stars 1
+- Qwen/Qwen3-32B-MLX-8bit: Downloads 919, Stars 1
+
+## 总结
+如果你要在 ModelScope 上“直接看量化模型得分”，当前最容易直接拿到的是：
+- `Qwen/Qwen3-32B-AWQ`（README 自带 AWQ-int4 vs bf16 性能表）
+
+而下面这些更多只有模型说明，没有统一结构化得分表：
+- GGUF
+- MLX-4bit / 6bit / 8bit
+- FP8
+
+如果后续需要，我可以继续做两步：
+1. 扩展到 community owner，搜 Qwen3-32B 的非官方 GPTQ / AWQ / GGUF 量化模型；
+2. 把这些模型的 README benchmark 全部抓出来，整理成一个横向对比表。
