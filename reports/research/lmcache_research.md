@@ -607,6 +607,274 @@ infra 必备层。
 
 所以它是一个很典型的 **cache layer / infra layer**。
 
+### 7.1 LMCache 的请求路径（以 vLLM v1 集成为主）
+
+结合 `lmcache/integration/vllm/lmcache_connector_v1.py` 和 `vllm_v1_adapter.py`，LMCache 在 vLLM 中的典型请求路径大致如下。
+
+#### 路径 A：普通请求 / 非 disaggregated prefill
+
+1. **请求进入 vLLM scheduler**  
+   vLLM 先做自己本地的 KV / prefix 命中判断。
+
+2. **LMCache 参与外部命中判断**  
+   调用 `get_num_new_matched_tokens()`，进一步判断在 LMCache 外部缓存中还能命中多少 token。  
+   这一步背后通常会走：
+   - `lookup_client`
+   - `token_database`
+   - `CacheEngineKey` 切分/哈希
+   - 外部 backend / remote store 的 existence lookup
+
+3. **scheduler 做 block 分配**  
+   分配好 vLLM paged KV blocks 之后，LMCache 调用 `update_state_after_alloc()`，把本次请求状态（如 token、block、外部命中 token 数）记录下来。
+
+4. **worker 在 forward 前启动异步 load**  
+   `start_load_kv()` 被调用，把外部缓存中的 KV 拉回 vLLM 的 paged KV buffer。  
+   如果是 layer-by-layer pipeline，还会在 attention 层中调用 `wait_for_layer_load(layer_name)`。
+
+5. **未命中的 token 继续正常 prefill / decode 计算**  
+   也就是说，LMCache 命中的部分走“加载”，未命中的部分走“重新计算”。
+
+6. **新产生的 KV 在执行过程中异步保存**  
+   attention 层会触发 `save_kv_layer()`，把新产生的 KV 按层异步写回 LMCache。  
+   forward 结束时调用 `wait_for_save()`，确保写回完成，避免 paged KV buffer 被覆盖。
+
+7. **请求结束，缓存对象进入可复用状态**  
+   在 `request_finished()` 阶段，请求对应的 block 在被释放前会被登记/保存/异步发送；后续相似请求就能命中这批 KV。
+
+#### 路径 B：disaggregated prefill
+
+`vllm_v1_adapter.py` 里能直接看到 `DisaggSpec`，包含：
+
+- `receiver_id`
+- `receiver_host`
+- `receiver_init_port`
+- `receiver_alloc_port`
+- `is_last_prefill`
+- `num_transferred_tokens`
+
+这说明 LMCache 不只是做“静态外部缓存池”，还显式支持 **prefill 节点 → decode 节点** 的 KV 传递。典型过程是：
+
+1. prefill 实例先把 prompt 的大部分 KV 计算出来  
+2. LMCache connector 把这些 KV 注册/发送到外部层  
+3. decode 实例通过 connector metadata / lookup / load 流程取回 KV  
+4. decode 实例在本地 paged KV buffer 中继续生成
+
+所以 LMCache 在这里同时承担两类角色：
+
+- **reuse layer**：未来请求的 KV 复用层
+- **transfer/orchestration layer**：prefill / decode 间的 KV 传输与编排层
+
+### 7.2 数据流图
+
+#### 图 1：LMCache 在单请求中的逻辑数据流
+
+```text
+User Request
+    |
+    v
+Serving Engine (vLLM / SGLang)
+    |
+    | 1. 本地 prefix / KV 命中判断
+    | 2. 调用 LMCache connector 做外部 lookup
+    v
+LMCache Integration Layer
+    |
+    +--> Lookup Client
+    |       |
+    |       +--> Token chunking / key hashing
+    |       +--> Controller / metadata / remote existence check
+    |
+    +--> 若命中：start_load_kv()
+    |       |
+    |       +--> Transfer Channel / GPU Connector
+    |       +--> 将远端 KV 回填到 vLLM paged KV buffer
+    |
+    +--> 若未命中：继续执行模型 prefill / decode
+    |
+    +--> save_kv_layer()
+            |
+            +--> Storage Manager
+                    |
+                    +--> L1: local CPU / local disk / local hot cache
+                    +--> L2: remote backend
+                            - Mooncake Store
+                            - InfiniStore
+                            - Redis / Valkey
+                            - S3 / FS / 其他 connector
+```
+
+#### 图 2：cluster 级视角
+
+```text
+                +----------------------+
+                |  Cache Controller    |
+                |  lookup / placement  |
+                |  registration / view |
+                +----------+-----------+
+                           |
+         +-----------------+-----------------+
+         |                                   |
+         v                                   v
++-------------------+               +-------------------+
+| vLLM/SGLang Node A|               | vLLM/SGLang Node B|
+| LMCache connector |               | LMCache connector |
++---------+---------+               +---------+---------+
+          |                                   |
+          +-----------------+-----------------+
+                            |
+                            v
+                 +---------------------------+
+                 | LMCache Storage Layer     |
+                 | L1/L2, local/remote tiers |
+                 +-------------+-------------+
+                               |
+          +--------------------+--------------------+
+          |                    |                    |
+          v                    v                    v
+   Mooncake Store        InfiniStore         Redis / S3 / FS ...
+```
+
+### 7.3 LMCache 与 Mooncake / InfiniStore / vLLM native cache 的对比
+
+先给一句话判断：
+
+- **LMCache**：更像“KV cache 层 + 编排层”
+- **Mooncake**：更像“高性能传输引擎 + 分布式 KV cache serving 平台”
+- **InfiniStore**：更像“高性能远端 KV store”
+- **vLLM native cache**：更像“引擎内部原生 prefix/KV 管理机制”
+
+#### 7.3.1 LMCache vs vLLM native cache
+
+**vLLM native cache** 的核心是：
+
+- 内建在 vLLM 引擎里
+- 重点是 **本地 paged KV 管理** 和 **automatic prefix caching**
+- 按 `docs/design/prefix_caching.md`，主要是 **hash-based block prefix reuse**
+- 优势是集成最深、路径最短、单实例内开销最低
+
+但它的边界也比较清晰：
+
+- 更偏 **单引擎内部** 的 KV 管理
+- 默认不是一个独立的“外部 cache layer”
+- 虽然 vLLM 现在支持 disaggregated prefilling 和第三方 KV connector，但生产级跨节点 KV 存储/复用更多依赖外部 connector
+
+**LMCache 相比 vLLM native cache 的增强点**：
+
+- 不只做引擎内部 prefix cache，而是做 **外部 KV cache 层**
+- 支持 **跨实例 / 跨节点 / 多后端 / 多存储层**
+- 有独立的 `lookup_client`、`cache_controller`、`storage_backend`
+- 可把 Mooncake / InfiniStore / Redis / S3 等纳入统一抽象
+- 支持更强的 reuse / offload / blend / disaggregated prefill 流程
+
+**一句话**：
+
+> vLLM native cache 解决“本地引擎内怎么高效管 KV”，LMCache 解决“整个集群里怎么把 KV 当共享资源来复用”。
+
+#### 7.3.2 LMCache vs Mooncake
+
+从 Mooncake README 看，Mooncake 的定位是：
+
+> **A KVCache-centric Disaggregated Architecture for LLM Serving**
+
+其核心组件包括：
+
+- **Transfer Engine (TE)**：高性能数据传输框架
+- **Mooncake Store**：分布式 KVCache storage engine
+- 与 vLLM / SGLang / LMDeploy 等的集成
+- 面向 RDMA、多 NIC 聚合、拓扑感知、PD/XpYd disaggregation
+
+Mooncake 更像是从 **高性能传输 / disaggregated serving 基础设施** 出发构建的系统，强调：
+
+- RDMA / NVLink / 多协议数据通道
+- 高带宽 KV 传输
+- 多副本、striping、并行 I/O
+- prefill / decode 解耦场景下的高性能跨节点传输
+
+而 LMCache 更像是从 **KV cache reuse / cache layer abstraction** 出发：
+
+- 更强调 lookup / cache policy / multi-backend abstraction
+- 更强调 engine 上层的 KV reuse 工作流
+- 能把 Mooncake Store 当成自己的一个 remote connector / lookup backend
+
+代码层面也能直接验证这点：
+
+- LMCache 里有 `mooncake_lookup_client.py`
+- 也有 `mooncakestore_connector.py`
+- `MooncakeLookupClient` 通过 `MooncakeDistributedStore.batch_is_exist(keys)` 做批量存在性查询
+- `MooncakestoreConnector` 则把 Mooncake 当作具体 remote store 接入 LMCache 的 storage backend 抽象
+
+所以两者关系不是纯竞争，更像：
+
+> **Mooncake 偏“高性能数据面 / store / transfer substrate”，LMCache 偏“cache orchestration layer / policy layer / integration layer”。**
+
+如果只看 KV reuse 抽象能力，LMCache 更通用；如果只看 **高性能跨机 KV 传输和 disaggregation 基础设施**，Mooncake 更激进也更底层。
+
+#### 7.3.3 LMCache vs InfiniStore
+
+InfiniStore README 的定位非常直接：
+
+> **high-performance KV store for distributed LLM inference**
+
+它明确支持两类场景：
+
+- **Prefill-Decoding disaggregation clusters**
+- **Non-disaggregated clusters**（作为额外大 KV pool）
+
+并且 README 直接写到：
+
+- 当前已与 **vLLM** 集成
+- **集成方式是经由 LMCache**，为了更灵活
+
+这句话其实已经很说明层次关系了。
+
+InfiniStore 更像：
+
+- 一个远端 KV store / RDMA store
+- 重点在高性能网络连接、远端对象存在性检查、读写接口
+- 代码结构也更集中：`src/rdma.cpp`、`protocol.cpp`、`mempool.cpp`、`pybind.cpp` 等
+
+LMCache 中的 `infinistore_connector.py` 也反映了这一点：
+
+- 直接初始化 `infinistore.ClientConfig`
+- 建立 `InfinityConnection`
+- 通过 RDMA 做 `check_exist` / `rdma_read_cache_async` / `rdma_write_cache_async`
+- LMCache 负责把 tensor / metadata / key 管理封装在更高层的 `RemoteConnector` 语义里
+
+所以两者关系也不是简单替代：
+
+> **InfiniStore 主要提供远端 KV 存储与传输能力，LMCache 提供更高层的 cache key / lookup / policy / engine integration / orchestration。**
+
+#### 7.3.4 一个工程视角下的总对比
+
+| 系统 | 核心定位 | 主要强项 | 主要短板/边界 | 与 LMCache 的关系 |
+|---|---|---|---|---|
+| **vLLM native cache** | 引擎内部 KV / prefix cache | 集成最深、单实例路径最短、原生 block/paged KV 管理 | 更偏单实例内部；跨节点共享/外部层能力有限 | LMCache 常作为其外部增强层 |
+| **LMCache** | KV cache layer + orchestration | 多后端抽象、跨实例共享、lookup/controller、offload/reuse/blend | 体系较复杂，部署和理解成本更高 | 中心比较对象 |
+| **Mooncake** | 高性能 KV transfer + distributed KV serving platform | RDMA、多协议传输、store、多副本、disaggregation 基础设施强 | 更偏高性能数据面和特定 serving 架构 | LMCache 可把 Mooncake 作为 backend / lookup substrate |
+| **InfiniStore** | 高性能远端 KV store | RDMA 远端读写、实现更聚焦、易作为远端池 | 抽象层更低，策略/编排/集成层较少 | LMCache 可把它作为 remote connector |
+
+### 7.4 一个更实用的理解框架
+
+如果从“层次”而不是“项目名”来理解，这四者大致落在不同层：
+
+```text
+[ Serving Engine Layer ]
+  vLLM native cache
+
+[ Cache Orchestration Layer ]
+  LMCache
+
+[ Remote KV Store / Transfer Substrate ]
+  Mooncake Store / Transfer Engine
+  InfiniStore
+```
+
+所以更准确的说法不是“谁完全替代谁”，而是：
+
+- **vLLM native cache**：引擎内原生能力
+- **LMCache**：把 KV 复用提升到集群和多后端层
+- **Mooncake / InfiniStore**：提供远端存储与高性能传输基础设施
+
 ---
 
 ## 8. 综合判断
