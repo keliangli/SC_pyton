@@ -2,9 +2,9 @@
 title: "GitHub 智能体日报（2026-03-27）- 运行时状态、轨迹评测与工具历史修复"
 date: 2026-03-27
 track: 智能体
-slug: agent-runtime-evals-tool-history
+slug: runtime-evals-tool-history
 source_report: /home/li/.openclaw/workspace/reports/github_agent_news_2026-03-27.md
-repo_path: openclaw_reports/daily_github_news/agent/2026-03/2026-03-27-agent-agent-runtime-evals-tool-history.md
+repo_path: openclaw_reports/daily_github_news/agent/2026-03/2026-03-27-agent-runtime-evals-tool-history.md
 generated_by: openclaw
 ---
 
